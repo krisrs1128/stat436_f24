@@ -1,5 +1,5 @@
 ---
-title: "STAT 436 (Spring 2023)"
+title: "STAT 436"
 site: distill::distill_website
 listing: posts
 ---
