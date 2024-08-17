@@ -13,6 +13,14 @@
 
 # STAT 436: Statistical Data Visualization
 
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+
 ## Fall 2024
 
 
@@ -65,47 +73,51 @@ they support.
 
 ### Office Hours
 
-Instructors: Kris Sankaran [ksankaran@wisc.edu] and Margaret Thairu [thairu@wisc.edu]
+_Instructors_
 
-TA: Matt Sathitvudh [sathitvudh@wisc.edu]
+* Kris Sankaran [ksankaran@wisc.edu] 
+* Margaret Thairu [thairu@wisc.edu]
+
+_TAs_
+
+* Matt Sathitvudh [sathitvudh@wisc.edu] 
+* Nathan Aviles [naviles@wisc.edu]
 
 We will announce in-person and virtual office hours depending on the results of
-the poll on the syllabus.
-
-Submit your preferences by **Sunday  at Noon**.
+the poll on the syllabus. Submit your preferences by **Sunday  at Noon**.
 
 ---
 
 
 ### Assessments
 
+.pull-left[
 * In-class exercises and discussions
 * 4 Homework assignments
   - 2 Portfolio + 2 Exercise Sheet
-* 3 group project reports, 2 presentations
+* 3 group project reports, 1 presentation
   - Teams of 4 - 6 people
-  - 2 Presentations = 1 Formal + 1 Informal
 * 1 midterm exam
-  - In-class on (tk set date)
+  - In-class on **October 17**
   - 1 page cheat sheet
----
+]
 
-### Grading
-
+.pull-right[
 * In-Class Exercises: 15%
 * Midterm: 20%
 * Homework: 35%
 * Group Project: 30%
+]
 
 ---
 
 ### Class Resources
 
-1. [Canvas page](tk set link)
+1. [Canvas page](https://canvas.wisc.edu/courses/428152)
   - Links to all other resources
 1. [Online notes](https://krisrs1128.github.io/stat436_f24/)
-1. [Online recordings](https://mediaspace.wisconsin.edu/) (also linked in notes)
-1. [Piazza](tk set link https://piazza.com/class/)
+1. [Online recordings](https://mediaspace.wisc.edu/channel/STAT+479%3A+Statistical+Data+Visualization/197911113) (also linked in notes)
+1. [Piazza](https://piazza.com/class/lzstdxmrwrl8m/)
 1. [Worked code examples](https://github.com/krisrs1128/stat436_f24/tree/main/activities/)
 1. [Readings](https://github.com/krisrs1128/stat436_f24/raw/main/logistics/syllabus.docx) (Page 3 of Syllabus)
 
@@ -126,7 +138,7 @@ Also feel free to speak with me after class.
   
 
 ``` r
-install.packages("tidyverse") 
+install.packages("tidyverse")
 ```
 
 ---
@@ -162,15 +174,13 @@ everyone's starting point.
 ### Exercise 1 - 1
 
 [Formulating Questions] Pick a dataset from
-[TidyTuesday](https://github.com/rfordatascience/tidytuesday#datasets), [Data Is
-Plural](https://docs.google.com/spreadsheets/d/1wZhPLMCHKJvwOkP4juclhjFgqIY8fQFMemwKL2c64vk/edit#gid=0),
-[Kaggle Datasets](https://www.kaggle.com/datasets), [Google Dataset
-Search](https://datasetsearch.research.google.com/), or your own personal
+[TidyTuesday](https://github.com/rfordatascience/tidytuesday#datasets), [Data Is Plural](https://docs.google.com/spreadsheets/d/1wZhPLMCHKJvwOkP4juclhjFgqIY8fQFMemwKL2c64vk/edit#gid=0),
+[Kaggle Datasets](https://www.kaggle.com/datasets), [Google Dataset Search](https://datasetsearch.research.google.com/), or your own personal
 studies that you would like to visualize this semester. 
 
-a. What makes you interested in this dataset? What questions does it help to answer?
+* What makes you interested in this dataset? What questions does it help to answer?
 
-b. Using any tools of your choice, make one example visualization from your
+* Using any tools of your choice, make one example visualization from your
     dataset. What was your thought process behind the design of this
     visualization? This will not be evaluated except for effort -- the purpose
     of the problem is to create a record your data visualization skills at the
@@ -190,8 +200,8 @@ b. Using any tools of your choice, make one example visualization from your
 ### Announcements
 
 1. We will accept responses to the Office Hours Poll (see syllabus) until Sunday at noon. Let us know your preferences!
-1. Project Milestones 0 and 1 have been posted. Due (tk set date)
-1. HW1 has been posted. Due (tk set date)
+1. Project Milestones 0 and 1 have been posted.
+1. HW1 has been posted.
 1. Please sign up (with your team) for a visualization share.
 
 ---
@@ -199,10 +209,12 @@ b. Using any tools of your choice, make one example visualization from your
 
 ### Beautiful Visualizations - Comments?
 
-[link](https://www.behance.net/gallery/78642081/IAU100-exhibition-data-visualization-and-graphics)
+.pull-left[
+&lt;img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/174c2b78642081.5cab3cdeb41a7.png" width=400/&gt;
+]
 
 .pull-right[
-[Source](https://www.behance.net/gallery/78642081/IAU100-exhibition-data-visualization-and-graphics)
+[Source](https://www.behance.net/gallery/78642081/IAU100-exhibition-data-visualization-and-graphics): IAU100 exhibition
 
 [Plot background](https://stackoverflow.com/questions/51255832/how-to-add-an-image-on-ggplot-background-not-the-panel)
 ]
@@ -212,6 +224,10 @@ b. Using any tools of your choice, make one example visualization from your
 ### Today
 
 By the end of class today, you should be able to,
+
+  * Comment on the graphical encodings used by a visualization.
+  * Compose ggplot2 layers to create multilayered plots.
+  * Customize the appearance of a ggplot2 figure using `theme` and scales.
 
 ---
 
@@ -248,13 +264,13 @@ Response to *one* of the following questions in the exercise sheet:
 
 * Office Hours have been set.
   - Kris, (tk), Medical Sciences Center 7225C
-  - Matt, (tk), Medical Sciences Center (tk)
+  - Matt, (tk), Medical Sciences Center 1130A A
 * A past midterm is posted under "Week 6" on Canvas.
-* Sign-up with your team for one of the visualization shares by (tk)*
+* Sign-up with your team for one of the visualization shares
 * Assignments:
-  - Project Milestone 0 [tk date]
-  - Project Milestone 1 [tk date]
-  - HW1 [tk date]
+  - Project Milestone 0
+  - Project Milestone 1
+  - HW1
 
 ---
 
@@ -265,19 +281,21 @@ Response to *one* of the following questions in the exercise sheet:
 ]
 
 ---
+exclude: true
 
 ### Exercise Review
 
-&lt;!-- * What is the meaning of these scales? Are 20 million slices of bread really
+* What is the meaning of these scales? Are 20 million slices of bread really
 comparable to 290,000 kg of poultry? What about CO2 equivalents?
 * A barchart would make quantitative comparisons much easier, especially for
 smaller circles
 * Bright pink background...
 * The text is sometimes quite small
 * Are apples really vegetables??
-* The icons are nice --&gt;
+* The icons are nice
 
 ---
+exclude: true
 
 ### Exercise Review
 
@@ -286,18 +304,20 @@ smaller circles
 ]
 
 ---
+exclude: true
 
 ### Exercise Review
-&lt;!-- 
+
 * This is actually quite elegant, though the visualization form is not that
 standard.
 * Several responses commented that additional labeling or color would help. Some of the existing annotation lacks context. I
 would caution that these additions should not come at the cost of the current
 information density.
 * In an interactive version, it would be nice to be able to filter by predation
-type --&gt;
+type
 
 ---
+exclude: true
 
 ### Exercise Review
 
@@ -306,10 +326,11 @@ type --&gt;
 ]
 
 ---
+exclude: true
 
 ### Exercise Review
 
-&lt;!-- * This is a very dense visualization, appropriate for a scientific venue, but
+* This is a very dense visualization, appropriate for a scientific venue, but
 requiring significant time to parse (though if a lot is learned through the
 process, this need not be a bad thing)
 * Having the scatterplot icons look like the properties of the sunflowers they
@@ -317,13 +338,16 @@ are studying was a brilliant idea.
 * The linking of the same color across many subplots is a good practice.
 However, the circle sizes are not consistent between (a) and (b).
 * Some of the text makes the figure unnecessarily busy. E.g., do we really need
-to know latitude and longitude? --&gt;
+to know latitude and longitude?
 
 ---
 
 ### Today
 
 By the end of class today, you should be able to,
+
+* Explain the "tidy data" principle and its relevance to data visualization.
+* Reshape data using the pivot functions in the `tidyr` package.
 
 ---
 
@@ -334,7 +358,8 @@ We will work through [Plant Growth Experiment] in the exercises sheet.
 * Live Demo: https://go.wisc.edu/
 * Whiteboard: https://go.wisc.edu/
 
-Starter code and solutions on Canvas.
+First, familiarize yourself with the question and respond to Discussion [2 - 1]
+linked on Canvas.
 
 ---
 
@@ -349,9 +374,9 @@ exercise and homework solutions.
 
 ### In-Class Exercise [2 - 1]
 
-* Submit an answer to [Code Analysis] from the exercises sheet.
+Submit an answer to [Code Analysis] from the exercises sheet.
 
-[Code Analysis] Pick one code example from this week’s lecture notes. Provide a
+&gt; [Code Analysis] Pick one code example from this week’s lecture notes. Provide a
 3 - 4 sentence summary of the overall implementation strategy. Then, add
 comments every 10 - 15 lines describing what each section of code is doing. If
 there are parts that you do not understand, add a ??? next to it (we will review
@@ -370,10 +395,10 @@ these in the next lecture).
 ### Announcements
 
 * Assignments:
-  - Project Milestone 0 [tk]
-  - Project Milestone 1 [tk]
-  - HW1 [tk]
-* Sign-up with your team for one of the visualization shares by *tk*
+  - Project Milestone 0
+  - Project Milestone 1
+  - HW1
+* Sign-up with your team on the visualization shares schedule.
 
 ---
 
@@ -384,7 +409,7 @@ these in the next lecture).
 ]
 
 .pull-right[
-  [Source](https://www.ft.com/content/4a2e9b05-463d-491c-af4e-2b0466cb8c63)
+  [Source](https://www.ft.com/content/4a2e9b05-463d-491c-af4e-2b0466cb8c63): Nomadland, Disney and the drive for Oscars dominance in 2021 (Financial Times)
 ]
 
 ---
@@ -396,7 +421,7 @@ these in the next lecture).
 ]
 
 .pull-right[
-[Source](https://ig.ft.com/sites/novak-djokovic-the-best-tennis-season-ever/)
+[Source](https://ig.ft.com/sites/novak-djokovic-the-best-tennis-season-ever/): Djokovic’s 2015 was the greatest ever men's tennis season (Financial Times)
 ]
 
 ---
@@ -405,15 +430,15 @@ these in the next lecture).
 
 By the end of the class, you should be able to...
 
-* 
-* 
+* Apply the `group_by + summarise` pattern to compute summary statistics across subsets of samples in a dataset.
+* Transform a dataset in place using functions from the tidyverse: `mutate`, `rename`, `str_*`, `unnest_*`.
 
 ---
 
 ### Exercise Review 2 - 1
 
-Pipe syntax seems to be a new concept. The main idea is to avoid storing
-intermediate computations.
+Let's review pipe syntax in R. The main idea is to avoid storing intermediate
+computations.
 
 .pull-left[
 
@@ -426,169 +451,205 @@ df3 &lt;- g(df2)
 .pull-right[
 
 ``` r
-df3 &lt;- df1 |&gt; 
+df3 &lt;- df1 |&gt;
   f() |&gt;
   g()
 ```
 ]
 
 ---
+exclude: true
 
-&lt;!-- ### Exercise Review 2 - 1 --&gt;
+### Exercise Review 2 - 1
 
-&lt;!-- The theme only applies to visualizations **after** the `theme_set` call. --&gt;
+The theme only applies to visualizations **after** the `theme_set` call.
 
-&lt;!-- ```{r, eval = FALSE, echo = FALSE} --&gt;
-&lt;!-- # set the theme --&gt;
-&lt;!-- my_theme &lt;- theme_bw() + --&gt;
-&lt;!--   theme( --&gt;
-&lt;!--     axis.title = element_text(size = 16), --&gt;
-&lt;!--     legend.title = element_text(size = 16), --&gt;
-&lt;!--     axis.text = element_text(size = 14), --&gt;
-&lt;!--     legend.text = element_text(size = 14), --&gt;
-&lt;!--     strip.text = element_text(size = 16) --&gt;
-&lt;!--   ) --&gt;
-&lt;!-- theme_set(my_theme) --&gt;
-&lt;!-- #?? I don't know why the theme doesn't setted.  --&gt;
-&lt;!-- ``` --&gt;
 
-&lt;!-- --- --&gt;
+``` r
+# set the theme
+my_theme &lt;- theme_bw() +
+  theme(
+    axis.title = element_text(size = 16),
+    legend.title = element_text(size = 16),
+    axis.text = element_text(size = 14),
+    legend.text = element_text(size = 14),
+    strip.text = element_text(size = 16)
+  )
+theme_set(my_theme)
+#?? i don't know why the theme doesn't setted.
+```
 
-&lt;!-- ### Exercise Review 2 - 1 --&gt;
+---
+exclude: true
 
-&lt;!-- ```{r, echo = FALSE} --&gt;
-&lt;!-- theme_set(theme_grey()) --&gt;
-&lt;!-- ``` --&gt;
-&lt;!-- ```{r, echo = FALSE} --&gt;
-&lt;!-- ggplot(mtcars) + --&gt;
-&lt;!--   geom_point(aes(mpg, hp)) --&gt;
-&lt;!-- ``` --&gt;
+### Exercise Review 2 - 1
 
-&lt;!-- --- --&gt;
 
-&lt;!-- ### Exercise Review 2 - 1 --&gt;
+``` r
+theme_set(theme_grey())
+ggplot(mtcars) +
+   geom_point(aes(mpg, hp))
+```
 
-&lt;!-- ```{r} --&gt;
-&lt;!-- my_theme &lt;- theme_bw() + --&gt;
-&lt;!--   theme( --&gt;
-&lt;!--     axis.title = element_text(size = 16), --&gt;
-&lt;!--     legend.title = element_text(size = 16), --&gt;
-&lt;!--     axis.text = element_text(size = 14), --&gt;
-&lt;!--     legend.text = element_text(size = 14), --&gt;
-&lt;!--     strip.text = element_text(size = 16) --&gt;
-&lt;!--   ) --&gt;
-&lt;!-- theme_set(my_theme) --&gt;
-&lt;!-- ggplot(mtcars) + --&gt;
-&lt;!--   geom_point(aes(mpg, hp)) --&gt;
-&lt;!-- ``` --&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-5-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
-&lt;!-- ```{r, echo = FALSE} --&gt;
-&lt;!-- th &lt;- theme_minimal() + --&gt;
-&lt;!--   theme( --&gt;
-&lt;!--     panel.grid.minor = element_blank(), --&gt;
-&lt;!--     panel.background = element_rect(fill = "#f7f7f7"), --&gt;
-&lt;!--     panel.border = element_rect(fill = NA, color = "#0c0c0c", size = 0.6), --&gt;
-&lt;!--     axis.text = element_text(size = 14), --&gt;
-&lt;!--     axis.title = element_text(size = 16), --&gt;
-&lt;!--     legend.position = "bottom" --&gt;
-&lt;!--   ) --&gt;
-&lt;!-- theme_set(th) --&gt;
-&lt;!-- ``` --&gt;
+---
+exclude: true
 
-&lt;!-- --- --&gt;
+### Exercise Review 2 - 1
 
-&lt;!-- ### Exercise Review 2 - 1 --&gt;
 
-&lt;!-- The plants demo used a regular expression ("regex") to extract the day number --&gt;
-&lt;!-- from the column names. --&gt;
+``` r
+my_theme &lt;- theme_bw() +
+  theme(
+    axis.title = element_text(size = 16),
+    legend.title = element_text(size = 16),
+    axis.text = element_text(size = 14),
+    legend.text = element_text(size = 14),
+    strip.text = element_text(size = 16)
+  )
+theme_set(my_theme)
+ggplot(mtcars) +
+  geom_point(aes(mpg, hp))
+```
 
-&lt;!-- ```{r, eval = FALSE} --&gt;
-&lt;!-- plants_reshaped &lt;- plants |&gt; --&gt;
-&lt;!--   pivot_longer(starts_with("height")) |&gt; --&gt;
-&lt;!--   mutate(day = str_extract(name, "[0-9]+")) #??? --&gt;
-&lt;!-- ``` --&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
-&lt;!-- --- --&gt;
 
-&lt;!-- ### Exercise Review 2 - 1 --&gt;
 
-&lt;!-- ```{r} --&gt;
-&lt;!-- str_extract("height.14", "[0-9]") --&gt;
-&lt;!-- ``` --&gt;
+---
+exclude: true
 
-&lt;!-- --- --&gt;
+### Exercise Review 2 - 1 
 
-&lt;!-- ### Exercise Review 2 - 1 --&gt;
+The plants demo used a regular expression ("regex") to extract the day number from the column names. 
 
-&lt;!-- ```{r} --&gt;
-&lt;!-- str_extract("height.14", "[0-9]+") --&gt;
-&lt;!-- ``` --&gt;
 
-&lt;!-- --- --&gt;
+``` r
+plants_reshaped &lt;- plants |&gt; 
+  pivot_longer(starts_with("height")) |&gt; 
+  mutate(day = str_extract(name, "[0-9]+")) #??? 
+```
 
-&lt;!-- ### Exercise Review 2 - 1 --&gt;
 
-&lt;!-- ```{r} --&gt;
-&lt;!-- str_extract("height.14.test.21", "[0-9]+") --&gt;
-&lt;!-- ``` --&gt;
+---
+exclude: true
 
-&lt;!-- --- --&gt;
 
-&lt;!-- ### Exercise Review 2 - 1 --&gt;
+### Exercise Review 2 - 1 
 
-&lt;!-- ```{r} --&gt;
-&lt;!-- str_extract_all("height.14.test.21", "[0-9]+") --&gt;
-&lt;!-- ``` --&gt;
+``` r
+str_extract("height.14", "[0-9]") 
+```
 
-&lt;!-- Hint: https://regexr.com/ is useful for learning and testing regexes. --&gt;
+```
+## [1] "1"
+```
 
-&lt;!-- --- --&gt;
+---
+exclude: true
 
-&lt;!-- ### Exercise Review 2 - 1 --&gt;
+### Exercise Review 2 - 1 
 
-&lt;!-- * The first two arguments (`day` and `value`) always define the x and y axes in any ggplot layer --&gt;
-&lt;!-- * `interaction` defines a temporary factor variable that looks at all combinations --&gt;
 
-&lt;!-- ```{r, eval = FALSE} --&gt;
-&lt;!-- ggplot(plants_reshaped) + --&gt;
-&lt;!--   geom_line(aes(day, value, group = interaction(plantid, treatment), col = treatment)) --&gt;
-&lt;!-- ``` --&gt;
+``` r
+str_extract("height.14", "[0-9]+") 
+```
 
-&lt;!-- `group` specifies what each line should correspond to. So here, it corresponds --&gt;
-&lt;!-- to `plantid x treatment` combinations. --&gt;
+```
+## [1] "14"
+```
 
-&lt;!-- --- --&gt;
+---
+exclude: true
 
-&lt;!-- ### Exercise Review 2 - 1 --&gt;
+### Exercise Review 2 - 1 
 
-&lt;!-- ```{r} --&gt;
-&lt;!-- interaction(1:4, c("A", "B", "C")) --&gt;
-&lt;!-- ``` --&gt;
 
-&lt;!-- --- --&gt;
+``` r
+str_extract("height.14.test.21", "[0-9]+") 
+```
 
-&lt;!-- ### Exercise Review 2 - 1 --&gt;
+```
+## [1] "14"
+```
 
-&lt;!-- ```{r, echo = FALSE} --&gt;
-&lt;!-- plants_long &lt;- read_csv("https://uwmadison.box.com/shared/static/qg9gwk2ldjdtcmmmiropcunf34ddonya.csv") |&gt; --&gt;
-&lt;!--   pivot_longer(starts_with("height"), names_to = "time", values_to = "height") |&gt; --&gt;
-&lt;!--   separate("time", c("dummy", "time"), convert = TRUE) --&gt;
-&lt;!-- ``` --&gt;
+---
+exclude: true
 
-&lt;!-- ```{r} --&gt;
-&lt;!-- ggplot(plants_long) + --&gt;
-&lt;!--   geom_point(aes(time, height)) --&gt;
-&lt;!-- ``` --&gt;
+### Exercise Review 2 - 1 
 
-&lt;!-- --- --&gt;
 
-&lt;!-- ### Exercise Review 2 - 1 --&gt;
+``` r
+str_extract_all("height.14.test.21", "[0-9]+") 
+```
 
-&lt;!-- ```{r} --&gt;
-&lt;!-- ggplot(plants_long) + --&gt;
-&lt;!--   geom_point(aes(interaction(time, treatment), height)) + --&gt;
-&lt;!--   theme(axis.text.x = element_text(angle = 90)) --&gt;
-&lt;!-- ``` --&gt;
+```
+## [[1]]
+## [1] "14" "21"
+```
+
+Hint: https://regexr.com/ is useful for learning and testing regexes. 
+---
+exclude: true
+
+### Exercise Review 2 - 1 
+
+* The first two arguments (`day` and `value`) always define the x and y axes in any ggplot layer 
+* `interaction` defines a temporary factor variable that looks at all combinations 
+
+
+``` r
+ggplot(plants_reshaped) + 
+  geom_line(aes(day, value, group = interaction(plantid, treatment), col = treatment)) 
+```
+
+`group` specifies what each line should correspond to. so here, it corresponds 
+to `plantid x treatment` combinations. 
+
+---
+exclude: true
+
+### Exercise Review 2 - 1 
+
+
+``` r
+interaction(1:4, c("a", "b", "c")) 
+```
+
+```
+## [1] 1.a 2.b 3.c 4.a
+## Levels: 1.a 2.a 3.a 4.a 1.b 2.b 3.b 4.b 1.c 2.c 3.c 4.c
+```
+
+---
+exclude: true
+
+### Exercise Review 2 - 1 
+
+
+
+
+``` r
+ggplot(plants_long) + 
+  geom_point(aes(time, height))
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-16-1.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+exclude: true
+
+### Exercise Review 2 - 1
+
+
+``` r
+ggplot(plants_long) +
+  geom_point(aes(interaction(time, treatment), height)) +
+  theme(axis.text.x = element_text(angle = 90))
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-17-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -615,19 +676,15 @@ If you finish part (a) during class, try to complete (b - c) as well.
 We will compare prices of different furniture categories and label the
 (relatively few) articles which cannot be bought online.
 
-
-``` r
-ikea &lt;- read_csv("https://uwmadison.box.com/shared/static/iat31h1wjg7abhd2889cput7k264bdzd.csv")
-```
-a. Make a plot that shows the relationship between the `category` of furniture
+* Make a plot that shows the relationship between the `category` of furniture
 and `price` (on a log-scale). Show each `item_id` as a point -- do not aggregate
 to boxplots or ridgelines -- but make sure to jitter and adjust the size the
 points to reduce the amount of overlap. _Hint: use `geom_jitter`._
 
-b. Modify the plot in (a) so that categories are sorted from those with highest
+* Modify the plot in (a) so that categories are sorted from those with highest
 to lowest average prices.
 
-c. Color points according to whether they can be purchased online. If they
+* Color points according to whether they can be purchased online. If they
 cannot be purchased online, add a text label giving the name of that item of
 furniture.
 
@@ -635,10 +692,10 @@ furniture.
 
 ## Week 3 - 1
 
-1. In-Class Exercise Review [2-2]
-1. In-Class Discussion [3-1]
-1. In-Class Demo [3-1]
-1. In-Class Exercise [3-1]
+1. In-Class Exercise Review [2 - 2]
+1. In-Class Discussion [3 - 1]
+1. In-Class Demo [3 - 1]
+1. In-Class Exercise [3 - 1]
 
 ---
 
@@ -646,98 +703,131 @@ furniture.
 
 * Thank you for your Project Milestone 0 submissions!
 * Assignments:
-  - Project Milestone 1 [tk]
-  - HW1 [tk]
-* Sign-up with your team for one of the visualization shares by *tk.*
+  - Project Milestone 1
+  - HW1
+* Sign-up with your team for one of the visualization shares.
+
+---
+exclude: true
+
+### Exercise Review [2 - 2]
+
+a. Make a plot that shows the relationship between the category of furniture and
+price (on a log-scale). Show each item_id as a point – do not aggregate to
+boxplots or ridgelines – but make sure to jitter and adjust the size the points
+to reduce the amount of overlap.
+
+
+``` r
+ikea &lt;- read_csv("https://uwmadison.box.com/shared/static/iat31h1wjg7abhd2889cput7k264bdzd.csv")
+head(ikea)
+```
+
+```
+## # A tibble: 6 × 14
+##      X1  item_id name  category price old_price sellable_online link  other_colors short_description
+##   &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;lgl&gt;           &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;            
+## 1     0 90420332 FREK… Bar fur…   265 No old p… TRUE            http… No           Bar table, in/ou…
+## 2     1   368814 NORD… Bar fur…   995 No old p… FALSE           http… No           Bar table,      …
+## 3     3 80155205 STIG  Bar fur…    69 No old p… TRUE            http… Yes          Bar stool with b…
+## 4     4 30180504 NORB… Bar fur…   225 No old p… TRUE            http… No           Wall-mounted dro…
+## 5     5 10122647 INGO… Bar fur…   345 No old p… TRUE            http… No           Bar stool with b…
+## 6     6 70404875 FRAN… Bar fur…   129 No old p… TRUE            http… No           Bar stool with b…
+## # ℹ 4 more variables: designer &lt;chr&gt;, depth &lt;dbl&gt;, height &lt;dbl&gt;, width &lt;dbl&gt;
+```
 
 ---
 
-&lt;!-- ### Exercise Review [2 - 2] --&gt;
+### Exercise Review [2 - 2]
 
-&lt;!-- a. Make a plot that shows the relationship between the category of furniture and --&gt;
-&lt;!-- price (on a log-scale). Show each item_id as a point – do not aggregate to --&gt;
-&lt;!-- boxplots or ridgelines – but make sure to jitter and adjust the size the points --&gt;
-&lt;!-- to reduce the amount of overlap. --&gt;
 
-&lt;!-- ```{r} --&gt;
-&lt;!-- ikea &lt;- read_csv("https://uwmadison.box.com/shared/static/iat31h1wjg7abhd2889cput7k264bdzd.csv") --&gt;
-&lt;!-- head(ikea) --&gt;
-&lt;!-- ``` --&gt;
+``` r
+ggplot(ikea) +
+  geom_jitter(aes(category, price))
+```
 
-&lt;!-- --- --&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-19-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
-&lt;!-- ### Exercise Review [2 - 2] --&gt;
+---
 
-&lt;!-- ```{r} --&gt;
-&lt;!-- ggplot(ikea) + --&gt;
-&lt;!--   geom_jitter(aes(category, price)) --&gt;
-&lt;!-- ``` --&gt;
 
-&lt;!-- --- --&gt;
+``` r
+ggplot(ikea) +
+  geom_jitter(aes(category, price)) +
+  labs(x = "Category of Furniture", y = "Price ($)") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
 
-&lt;!-- ```{r, fig.height = 5, fig.width = 10} --&gt;
-&lt;!-- ggplot(ikea) + --&gt;
-&lt;!--   geom_jitter(aes(category, price)) + --&gt;
-&lt;!--   labs(x = "Category of Furniture", y = "Price ($)") + --&gt;
-&lt;!--   theme(axis.text.x = element_text(angle = 90, hjust = 1)) --&gt;
-&lt;!-- ``` --&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-20-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
-&lt;!-- --- --&gt;
+---
 
-&lt;!-- b. Modify the plot in (a) so that categories are sorted from those with highest --&gt;
-&lt;!-- to lowest average prices. --&gt;
+b. Modify the plot in (a) so that categories are sorted from those with highest
+to lowest average prices.
 
-&lt;!-- ```{r, fig.height = 5, fig.width = 10} --&gt;
-&lt;!-- ggplot(ikea) + --&gt;
-&lt;!--   geom_jitter(aes(reorder(category, price), price)) + --&gt;
-&lt;!--   labs(x = "Category of Furniture", y = "Price ($)") + --&gt;
-&lt;!--   theme(axis.text.x = element_text(angle = 90, hjust = 1)) --&gt;
-&lt;!-- ``` --&gt;
 
-&lt;!-- --- --&gt;
+``` r
+ggplot(ikea) +
+  geom_jitter(aes(reorder(category, price), price)) +
+  labs(x = "Category of Furniture", y = "Price ($)") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
 
-&lt;!-- ```{r, fig.height = 5, fig.width = 10} --&gt;
-&lt;!-- ggplot(ikea) + --&gt;
-&lt;!--   geom_jitter(aes(reorder(category, price), price)) + --&gt;
-&lt;!--   labs(x = "Category of Furniture", y = "Price ($)") + --&gt;
-&lt;!--   scale_y_log10() + --&gt;
-&lt;!--   theme(axis.text.x = element_text(angle = 90, hjust = 1)) --&gt;
-&lt;!-- ``` --&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-21-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
-&lt;!-- --- --&gt;
+---
 
-&lt;!-- c. Color points according to whether they can be purchased online. If they --&gt;
-&lt;!-- cannot be purchased online, add a text label giving the name of that item of --&gt;
-&lt;!-- furniture. --&gt;
 
-&lt;!-- ```{r, fig.height = 5, fig.width = 10} --&gt;
-&lt;!-- ggplot(ikea) + --&gt;
-&lt;!--   geom_jitter(aes(reorder(category, price), price, col = sellable_online)) + --&gt;
-&lt;!--   labs(x = "Category of Furniture", y = "Price ($)", col = "Available Online?") + --&gt;
-&lt;!--   scale_y_log10() + --&gt;
-&lt;!--   scale_color_manual(values = c("#400202", "#0596A6")) + --&gt;
-&lt;!--   theme( --&gt;
-&lt;!--     axis.text.x = element_text(angle = 90, hjust = 1), --&gt;
-&lt;!--     legend.position = "right" --&gt;
-&lt;!--   ) --&gt;
-&lt;!-- ``` --&gt;
+``` r
+ggplot(ikea) +
+  geom_jitter(aes(reorder(category, price), price)) +
+  labs(x = "Category of Furniture", y = "Price ($)") +
+  scale_y_log10() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
 
-&lt;!-- --- --&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-22-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
-&lt;!-- ```{r, fig.height = 5, fig.width = 10} --&gt;
-&lt;!-- library(ggrepel) --&gt;
-&lt;!-- ggplot(ikea, aes(reorder(category, price), price)) + --&gt;
-&lt;!--   geom_jitter(data = filter(ikea, sellable_online), aes(col = sellable_online), size = 1, alpha = 0.6) + --&gt;
-&lt;!--   geom_jitter(data = filter(ikea, !sellable_online), aes(col = sellable_online), size = 3) + --&gt;
-&lt;!--   geom_text_repel(data = filter(ikea, !sellable_online), aes(label = name), size = 4) + --&gt;
-&lt;!--   labs(x = "Category of Furniture", y = "Price ($)", col = "Available Online?") + --&gt;
-&lt;!--   scale_color_manual(values = c("#400202", "#0596A6")) + --&gt;
-&lt;!--   scale_y_log10() + --&gt;
-&lt;!--   theme( --&gt;
-&lt;!--     axis.text.x = element_text(angle = 90, hjust = 1), --&gt;
-&lt;!--     legend.position = "right" --&gt;
-&lt;!--   ) --&gt;
-&lt;!-- ``` --&gt;
+---
+
+c. Color points according to whether they can be purchased online. If they
+cannot be purchased online, add a text label giving the name of that item of
+furniture.
+
+
+``` r
+ggplot(ikea) +
+  geom_jitter(aes(reorder(category, price), price, col = sellable_online)) +
+  labs(x = "Category of Furniture", y = "Price ($)", col = "Available Online?") +
+  scale_y_log10() +
+  scale_color_manual(values = c("#400202", "#0596A6")) +
+  theme(
+    axis.text.x = element_text(angle = 90, hjust = 1),
+    legend.position = "right"
+  )
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-23-1.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+``` r
+library(ggrepel)
+ggplot(ikea, aes(reorder(category, price), price)) +
+  geom_jitter(data = filter(ikea, sellable_online), aes(col = sellable_online), size = 1, alpha = 0.6) +
+  geom_jitter(data = filter(ikea, !sellable_online), aes(col = sellable_online), size = 3) +
+  geom_text_repel(data = filter(ikea, !sellable_online), aes(label = name), size = 4) +
+  labs(x = "Category of Furniture", y = "Price ($)", col = "Available Online?") +
+  scale_color_manual(values = c("#400202", "#0596A6")) +
+  scale_y_log10() +
+  theme(
+    axis.text.x = element_text(angle = 90, hjust = 1),
+    legend.position = "right"
+  )
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-24-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -793,80 +883,102 @@ is finalized.
   - HW1 [tk]
 
 ---
+exclude: true
 
-&lt;!-- ### Exercise Review --&gt;
+### Exercise Review
 
-&lt;!-- Here is the original histogram, without any faceting by category. --&gt;
+Here is the original histogram, without any faceting by category.
 
-&lt;!-- ```{r} --&gt;
-&lt;!-- ikea &lt;- read_csv("https://uwmadison.box.com/shared/static/iat31h1wjg7abhd2889cput7k264bdzd.csv") %&gt;% --&gt;
-&lt;!--           filter(category %in% c("Tables", "Bookcases", "Beds", "Cabinets", "Sofas", "Wardrobes")) --&gt;
-&lt;!-- p &lt;- ggplot(ikea) + --&gt;
-&lt;!--   geom_histogram(aes(log(price))) --&gt;
-&lt;!-- p --&gt;
-&lt;!-- ``` --&gt;
 
-&lt;!-- --- --&gt;
+``` r
+ikea &lt;- read_csv("https://uwmadison.box.com/shared/static/iat31h1wjg7abhd2889cput7k264bdzd.csv") %&gt;%
+          filter(category %in% c("Tables", "Bookcases", "Beds", "Cabinets", "Sofas", "Wardrobes"))
+p &lt;- ggplot(ikea) +
+  geom_histogram(aes(log(price)))
+p
+```
 
-&lt;!-- ### Exercise Review (Part (a)) --&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-25-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
-&lt;!-- .pull-left[ --&gt;
-&lt;!-- * `facet_grid` controls whether we explicitly arrange facets along rows or columns. --&gt;
-&lt;!-- * If we place the variable before the `~`, it arranges them along rows. --&gt;
-&lt;!-- ] --&gt;
+---
+exclude: true
 
-&lt;!-- .pull-right[ --&gt;
-&lt;!-- ```{r, fig.height = 3.9, fig.width = 4} --&gt;
-&lt;!-- p + facet_grid(category ~ .) --&gt;
-&lt;!-- ``` --&gt;
-&lt;!-- ] --&gt;
+### Exercise Review (Part (a))
 
-&lt;!-- --- --&gt;
+.pull-left[
+* `facet_grid` controls whether we explicitly arrange facets along rows or columns.
+* If we place the variable before the `~`, it arranges them along rows.
+]
 
-&lt;!-- ### Exercise Review (Part (b)) --&gt;
+.pull-right[
 
-&lt;!-- .pull-left[ --&gt;
-&lt;!-- * The remaining plots all use `facet_wrap` --&gt;
-&lt;!-- * By default, the axes all use the same scale, which rules out (ii) --&gt;
-&lt;!-- * By default, the facets are sorted alphabetically, which rules out (iv) --&gt;
-&lt;!-- ] --&gt;
+``` r
+p + facet_grid(category ~ .)
+```
 
-&lt;!-- .pull-right[ --&gt;
-&lt;!-- ```{r, fig.width = 6.5, fig.height = 4} --&gt;
-&lt;!-- p + facet_wrap(~ category) --&gt;
-&lt;!-- ``` --&gt;
-&lt;!-- ] --&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-26-1.png" width="650" style="display: block; margin: auto;" /&gt;
+]
 
-&lt;!-- --- --&gt;
+---
+exclude: true
 
-&lt;!-- ### Exercise Review (Part (c)) --&gt;
+### Exercise Review (Part (b))
 
-&lt;!-- The only plot with different `\(y\)`-axes per facet is plot (iii). --&gt;
+.pull-left[
+* The remaining plots all use `facet_wrap`
+* By default, the axes all use the same scale, which rules out (ii)
+* By default, the facets are sorted alphabetically, which rules out (iv)
+]
 
-&lt;!-- ```{r, fig.width = 6.5, fig.height = 4} --&gt;
-&lt;!-- p + facet_wrap(~ category, scales = "free_y") --&gt;
-&lt;!-- ``` --&gt;
+.pull-right[
 
-&lt;!-- --- --&gt;
+``` r
+p + facet_wrap(~ category)
+```
 
-&lt;!-- ### Exercise Review (Part (d)) --&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-27-1.png" width="650" style="display: block; margin: auto;" /&gt;
+]
 
-&lt;!-- `axes = "separate"` is not an actual option in `facet_grid` --&gt;
+---
+exclude: true
 
-&lt;!-- ```{r, eval = FALSE} --&gt;
-&lt;!-- p + facet_wrap(~ category, axes = "separate") --&gt;
-&lt;!-- ``` --&gt;
+### Exercise Review (Part (c))
 
-&lt;!-- --- --&gt;
+The only plot with different `\(y\)`-axes per facet is plot (iii).
 
-&lt;!-- ### Exercise Review (Part (e)) --&gt;
 
-&lt;!-- Looking at the `\(x\)`-axis values of plot (iv), we can see that the facets are --&gt;
-&lt;!-- sorted from those with the lowest to those with the highest average price. --&gt;
+``` r
+p + facet_wrap(~ category, scales = "free_y")
+```
 
-&lt;!-- ```{r, fig.width = 6.5, fig.height = 4, out.width = 600} --&gt;
-&lt;!-- p + facet_wrap(~ reorder(category, price)) --&gt;
-&lt;!-- ``` --&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-28-1.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+exclude: true
+
+### Exercise Review (Part (d))
+
+`axes = "separate"` is not an actual option in `facet_grid`
+
+
+``` r
+p + facet_wrap(~ category, axes = "separate")
+```
+
+---
+exclude: true
+
+### Exercise Review (Part (e))
+
+Looking at the `\(x\)`-axis values of plot (iv), we can see that the facets are
+sorted from those with the lowest to those with the highest average price.
+
+
+``` r
+p + facet_wrap(~ reorder(category, price))
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-30-1.png" width="600" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -911,43 +1023,47 @@ a brief explanation for your selection.
   - Project Milestone 2 has been released [tk]
 
 ---
+exclude: true
 
-&lt;!-- ### Exercise Review --&gt;
+### Exercise Review
 
-&lt;!-- _Whenever possible, each panel in a faceted plot should be made to have its own `\(y\)`-axis scale._ --&gt;
+_Whenever possible, each panel in a faceted plot should be made to have its own `\(y\)`-axis scale._
 
-&lt;!-- False: Readers generally assume the facets have the same axes scales. Free --&gt;
-&lt;!-- scales should only be provided if the resulting figure would not be legible --&gt;
-&lt;!-- otherwise. In this case, the caption should highlight the fact that the scales --&gt;
-&lt;!-- are not the same across facets. --&gt;
+False: Readers generally assume the facets have the same axes scales. Free
+scales should only be provided if the resulting figure would not be legible
+otherwise. In this case, the caption should highlight the fact that the scales
+are not the same across facets.
 
-&lt;!-- --- --&gt;
+---
+exclude: true
 
-&lt;!-- ### Exercise Review --&gt;
+### Exercise Review
 
-&lt;!-- _When using the `patchwork` package, two plots `p1` and `p2` can be placed side-by-side using `p1 / p2`._ --&gt;
+_When using the `patchwork` package, two plots `p1` and `p2` can be placed side-by-side using `p1 / p2`._
 
-&lt;!-- False: `/` places panels on top of one another. To place them side by side, we --&gt;
-&lt;!-- can use `+`.  --&gt;
+False: `/` places panels on top of one another. To place them side by side, we
+can use `+`. 
 
-&lt;!-- --- --&gt;
+---
+exclude: true
 
-&lt;!-- ### Exercise Review --&gt;
+### Exercise Review
 
-&lt;!-- _When using the `patchwork` package, the `plot_layout` function can be used to collect legends._ --&gt;
+_When using the `patchwork` package, the `plot_layout` function can be used to collect legends._
 
 
-&lt;!-- True: This can be done by calling `plot_layout(guides = "collect")`. --&gt;
+True: This can be done by calling `plot_layout(guides = "collect")`.
 
-&lt;!-- --- --&gt;
+---
+exclude: true
 
-&lt;!-- ### Exercise Review --&gt;
+### Exercise Review
 
-&lt;!-- _Relative to interactively filtered displays, faceted plots are less taxing on the reader's memory._ --&gt;
+_Relative to interactively filtered displays, faceted plots are less taxing on the reader's memory._
 
-&lt;!-- True: Faceting requires more space, but it allows comparisons to be made without --&gt;
-&lt;!-- having to recall the previous interactive view. Tamara Munzner calls this --&gt;
-&lt;!-- principle, "Eyes beat memory." --&gt;
+True: Faceting requires more space, but it allows comparisons to be made without
+having to recall the previous interactive view. Tamara Munzner calls this
+principle, "Eyes beat memory."
 
 ---
 
@@ -1113,6 +1229,7 @@ Visualization). The remaining modules are focused on specific data types.
   * The Midterm is in-class on **tk**.
 
 ---
+exclude: true
 
 ### Exercise Review
 
@@ -1278,60 +1395,91 @@ Canvas.  To study, consider:
   1. Sketching solutions to problems from the exercise sheet.
 
 ---
+exclude: true
 
-&lt;!-- ### Exercise Review --&gt;
+### Exercise Review
 
-&lt;!-- Let's look at the most streamed song of 2017, which was "Shape of You." The --&gt;
-&lt;!-- dataset --&gt;
-&lt;!-- [here](https://uwmadison.box.com/shared/static/hvplyr3jy6vbt7s80lqgfx81ai4hdl0q.csv) --&gt;
-&lt;!-- contains the number of streams for this song across regions, for each day in --&gt;
-&lt;!-- which it was in the Spotify 100 most streamed songs for that region. Create a --&gt;
-&lt;!-- `tsibble` object from this dataset, keying by `region` and indexing by `date`. --&gt;
+Let's look at the most streamed song of 2017, which was "Shape of You." The
+dataset
+[here](https://uwmadison.box.com/shared/static/hvplyr3jy6vbt7s80lqgfx81ai4hdl0q.csv)
+contains the number of streams for this song across regions, for each day in
+which it was in the Spotify 100 most streamed songs for that region. Create a
+`tsibble` object from this dataset, keying by `region` and indexing by `date`.
 
-&lt;!-- ```{r} --&gt;
-&lt;!-- song &lt;- read_csv("https://uwmadison.box.com/shared/static/hvplyr3jy6vbt7s80lqgfx81ai4hdl0q.csv") --&gt;
-&lt;!-- head(song) --&gt;
-&lt;!-- ``` --&gt;
 
-&lt;!-- --- --&gt;
+``` r
+song &lt;- read_csv("https://uwmadison.box.com/shared/static/hvplyr3jy6vbt7s80lqgfx81ai4hdl0q.csv")
+head(song)
+```
 
-&lt;!-- ### Exercise Review --&gt;
+```
+## # A tibble: 6 × 5
+##   artist     track_name   region date       streams
+##   &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;  &lt;date&gt;       &lt;dbl&gt;
+## 1 Ed Sheeran Shape of You ar     2017-01-06   57617
+## 2 Ed Sheeran Shape of You ar     2017-01-07   51212
+## 3 Ed Sheeran Shape of You ar     2017-01-08   47299
+## 4 Ed Sheeran Shape of You ar     2017-01-09   58157
+## 5 Ed Sheeran Shape of You ar     2017-01-10   56384
+## 6 Ed Sheeran Shape of You ar     2017-01-11   59494
+```
 
-&lt;!-- ```{r} --&gt;
-&lt;!-- library(tsibble) --&gt;
-&lt;!-- song_ts &lt;- as_tsibble(song, key = "region", index = "date") --&gt;
-&lt;!-- song_ts --&gt;
-&lt;!-- ``` --&gt;
+---
+exclude: true
 
-&lt;!-- --- --&gt;
+### Exercise Review
 
-&lt;!-- ### Exercise Review --&gt;
 
-&lt;!-- Filter to `region == "global"`, and make a `gg_season` plot by month. Comment --&gt;
-&lt;!-- on the what you see. --&gt;
+``` r
+library(tsibble)
+song_ts &lt;- as_tsibble(song, key = "region", index = "date")
+song_ts
+```
 
-&lt;!-- ```{r, echo = FALSE, fig.width = 6} --&gt;
-&lt;!-- library(feasts) --&gt;
-&lt;!-- song_ts |&gt; --&gt;
-&lt;!--   filter(region == "global") |&gt; --&gt;
-&lt;!--   gg_season(streams, period = "month") + --&gt;
-&lt;!--   theme(legend.key.width = unit(1.5, "cm")) --&gt;
-&lt;!-- ``` --&gt;
+```
+## # A tsibble: 19,907 x 5 [1D]
+## # Key:       region [54]
+##    artist     track_name   region date       streams
+##    &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;  &lt;date&gt;       &lt;dbl&gt;
+##  1 Ed Sheeran Shape of You ar     2017-01-06   57617
+##  2 Ed Sheeran Shape of You ar     2017-01-07   51212
+##  3 Ed Sheeran Shape of You ar     2017-01-08   47299
+##  4 Ed Sheeran Shape of You ar     2017-01-09   58157
+##  5 Ed Sheeran Shape of You ar     2017-01-10   56384
+##  6 Ed Sheeran Shape of You ar     2017-01-11   59494
+##  7 Ed Sheeran Shape of You ar     2017-01-12   59565
+##  8 Ed Sheeran Shape of You ar     2017-01-13   64899
+##  9 Ed Sheeran Shape of You ar     2017-01-14   71555
+## 10 Ed Sheeran Shape of You ar     2017-01-15   62253
+## # ℹ 19,897 more rows
+```
 
-&lt;!-- --- --&gt;
+---
+exclude: true
 
-&lt;!-- ### Exercise Review --&gt;
+### Exercise Review
 
-&lt;!-- Filter to `region == "global"`, and make a `gg_season` plot by month. Comment --&gt;
-&lt;!-- on the what you see. --&gt;
+Filter to `region == "global"`, and make a `gg_season` plot by month. Comment
+on the what you see.
 
-&lt;!-- ```{r, echo = TRUE, eval = FALSE} --&gt;
-&lt;!-- library(feasts) --&gt;
-&lt;!-- song_ts |&gt; --&gt;
-&lt;!--   filter(region == "global") |&gt; --&gt;
-&lt;!--   gg_season(period = "month") + --&gt;
-&lt;!--   theme(legend.key.width = unit(1.5, "cm")) --&gt;
-&lt;!-- ``` --&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-34-1.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+exclude: true
+
+### Exercise Review
+
+Filter to `region == "global"`, and make a `gg_season` plot by month. Comment
+on the what you see.
+
+
+``` r
+library(feasts)
+song_ts |&gt;
+  filter(region == "global") |&gt;
+  gg_season(period = "month") +
+  theme(legend.key.width = unit(1.5, "cm"))
+```
 
 ---
 
@@ -1590,7 +1738,7 @@ tourism |&gt;
   gg_lag(y = Trips)
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="700" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-37-1.png" width="700" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1657,7 +1805,7 @@ tm_shape(lakes) +
   tm_polygons()
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-9-1.png" width="1400" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-39-1.png" width="1400" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1701,7 +1849,7 @@ tm_shape(landsat) +
   tm_rgb()
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-11-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-41-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1713,7 +1861,7 @@ tm_shape(landsat) +
   tm_rgb(r = 15, g = 15, b = 15, max.value = 75)
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-12-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-42-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1872,17 +2020,15 @@ When critiquing, ask:
 
 ### Announcements
 
-1. Project and Portfolio Peer Reviews are due **tk**
-1. HW3 is due **tk**.
-1. Undergraduate research quick talks
-  - Statistics seminar on Thursday, April 11 @ 4:00 pm - 5:00 pm on Zoom*
+1. Assignments
+  * Project and Portfolio Peer Reviews
+  * HW3
 
 ---
 
 ### Midterm Recap
 
 * Refer to the syllabus for our percent/percentile-based grading scheme
-* We added 1 point to everyone's overall score because the "Shiny Bugs" question was harder than we anticipated.
 * We were generally more forgiving with code-related issues relative to problems in definitions/discussion.
 
 &lt;img src="figure/midterm.svg"/&gt;
@@ -1954,12 +2100,9 @@ and see how they would address it
 
 ### Announcements
 
-1. Project and Portfolio Peer Reviews are due **tk**
-1. HW3 is due **tk**.
-1. Undergraduate research quick talks
-  - Statistics seminar on Thursday, April 11 @ 4:00 pm - 5:00 pm on Zoom*
-  - https://uwmadison.zoom.us/j/95252018582
-
+1. Assignments
+  * Project and Portfolio Peer Reviews
+  * HW3
 
 ---
 
@@ -2002,7 +2145,7 @@ With your group, work through [How to Misread UMAP].
 what the next step in the analysis is.
 * At the end of the demo, you can summarize your guesses and submit them. You should be able to make your submission before the end of class.
 
-&lt;!-- (How to make recipe, how to color points, impact of increasing n neighbors) --&gt;
+(How to make recipe, how to color points, impact of increasing n neighbors)
 
 ---
 
@@ -2026,14 +2169,9 @@ We will work through [Single-Cell Genomics] in the exercise sheet.
 
 ### Announcements
 
-1. Due Dates 
-  - HW3 is due **April 15**.
-  - HW4 is due **May 6**.
-  - Project Milestone 3 is due **May 6**
-1. If you posted HW2 on Piazza by the deadline, but did not submit it to Canvas, please write to teh TA with me in cc.
-1. Undergraduate research quick talks
-  - Statistics seminar on Thursday, April 11 @ 4:00 pm - 5:00 pm on Zoom
-  - https://uwmadison.zoom.us/j/95252018582
+1. Assignments
+  - HW3
+  - Project Milestone 3
 
 ---
 
@@ -2082,70 +2220,72 @@ from weeks 10 - 11.
 ### Announcements
 
 1. Due Dates 
-  - HW3 is due **April 15**.
-  - HW4 is due **May 6**.
-  - Project Milestone 3 is due **May 6**
-1. Undergraduate research quick talks
-  - Statistics seminar on Thursday, April 11 @ 4:00 pm - 5:00 pm on Zoom*
-  - https://uwmadison.zoom.us/j/95252018582
+  - HW3
+  - HW4
+  - Project Milestone 3
 
 ---
+exclude: true
 
-&lt;!-- ### Exercise Review --&gt;
+### Exercise Review
 
-&lt;!-- In R's formula syntax, `.` is shorthand for "all variables." This is saying to --&gt;
-&lt;!-- build a recipe using all variables as predictors, with none as the response. --&gt;
+In R's formula syntax, `.` is shorthand for "all variables." This is saying to
+build a recipe using all variables as predictors, with none as the response.
 
-&lt;!-- ```{r, eval = FALSE} --&gt;
-&lt;!-- umap_rec &lt;- recipe(~., data = pbmc) |&gt; # Why  ~. ?  why we want to swap x and y value? --&gt;
-&lt;!-- ``` --&gt;
 
-&lt;!-- --- --&gt;
+``` r
+umap_rec &lt;- recipe(~., data = pbmc) |&gt; # Why  ~. ?  why we want to swap x and y value?
+```
 
-&lt;!-- ### Exercise Review --&gt;
+---
+exclude: true
 
-&lt;!-- `value` refers to the Principal Component value for that dimension. --&gt;
+### Exercise Review
 
-&lt;!-- * Formally: This column stores the vectors that define the PC subspace. --&gt;
-&lt;!-- * Informally: As we increase along that PC's direction, value describes how that coordinate is expected to change. --&gt;
+`value` refers to the Principal Component value for that dimension.
 
-&lt;!-- .center[ --&gt;
-&lt;!-- &lt;img src="figure/tidy_value.png" width=400/&gt; --&gt;
-&lt;!-- ] --&gt;
+* Formally: This column stores the vectors that define the PC subspace.
+* Informally: As we increase along that PC's direction, value describes how that coordinate is expected to change.
 
-&lt;!-- --- --&gt;
+.center[
+&lt;img src="figure/tidy_value.png" width=400/&gt;
+]
 
-&lt;!-- ### Exercise Review --&gt;
+---
+exclude: true
 
-&lt;!-- In this example, we can argue that, --&gt;
+### Exercise Review
 
-&lt;!-- \begin{align} --&gt;
-&lt;!-- \text{Gauguin } \sim 1.38 \text{PC}_{1} - 1.15 \text{PC}_{2} + 1.34 \text{PC}_{3} + \dots --&gt;
-&lt;!-- \end{align} --&gt;
+In this example, we can argue that,
 
-&lt;!-- .center[ --&gt;
-&lt;!--   &lt;img src="figure/pca_scores.png" width=600/&gt; --&gt;
-&lt;!-- ] --&gt;
+`\begin{align}
+\text{Gauguin } \sim 1.38 \text{PC}_{1} - 1.15 \text{PC}_{2} + 1.34 \text{PC}_{3} + \dots
+\end{align}`
 
-&lt;!-- --- --&gt;
+.center[
+  &lt;img src="figure/pca_scores.png" width=600/&gt;
+]
 
-&lt;!-- ### Exercise Review --&gt;
+---
+exclude: true
 
-&lt;!-- In this example, we can argue that, --&gt;
+### Exercise Review
 
-&lt;!-- \begin{align} --&gt;
-&lt;!-- \text{Gauguin } \sim 1.38 \text{PC}_{1} - 1.15 \text{PC}_{2} + 1.34 \text{PC}_{3} + \dots --&gt;
-&lt;!-- \end{align} --&gt;
+In this example, we can argue that,
 
-&lt;!-- For example, if we use the first 5 PC dimensions, then the Light Rum coordinate --&gt;
-&lt;!-- of the Gauguin should be roughly, --&gt;
+`\begin{align}
+\text{Gauguin } \sim 1.38 \text{PC}_{1} - 1.15 \text{PC}_{2} + 1.34 \text{PC}_{3} + \dots
+\end{align}`
 
-&lt;!-- \begin{align} --&gt;
-&lt;!-- \text{Gauguin}_{\text{Light Rum}} &amp;= 1.38 \times 0.163 - 1.15 \times \left(-0.112\right) + 1.34 \times 0.152 \\ --&gt;
-&lt;!-- &amp;\approx 1.22 --&gt;
-&lt;!-- \end{align} --&gt;
+For example, if we use the first 5 PC dimensions, then the Light Rum coordinate
+of the Gauguin should be roughly,
 
-&lt;!-- The actual value is 2. --&gt;
+`\begin{align}
+\text{Gauguin}_{\text{Light Rum}} &amp;= 1.38 \times 0.163 - 1.15 \times \left(-0.112\right) + 1.34 \times 0.152 \\
+&amp;\approx 1.22
+\end{align}`
+
+The actual value is 2.
 
 ---
 
@@ -2177,8 +2317,6 @@ We will work through [Hotel Reviews] in the exercise sheet.
 
 With your team, respond to [Milestone Reflection] from the exercise sheet.
 
-[Milestone Reflection] In this exercise, you will have a chance to reflect on your team’s workflow for the upcoming project milestone. Please respond to the following prompts,
-
 a. How do you plan on organizing your team’s writing and coding efforts? How can you ensure that relevant resources and preliminary progress can be easily reviewed?
 
 b. What do you anticipate will be the most significant challenge your team faces in preparing the project milestone? Which aspects of this challenge are within your team’s control? How do you plan on overcoming (or sidestepping) this challenge?
@@ -2198,15 +2336,10 @@ c. Do you have any questions for the teaching staff related to the upcoming proj
 
 ### Announcements
 
-1. Due Dates 
-  - HW3 is due **April 15**.
-  - HW4 is due **May 6**.
-  - Project Milestone 3 is due **May 6**
-1. Logistics
-  - There will be no class on **May 1**. I am away at a conference and the TA
-  cannot be here in person.
-  - For this reason, the final presentations are cancelled. These points have
-  been re-allocated in the updated project milestone 3 description.
+1. Assignments
+  - HW3
+  - HW4
+  - Project Milestone 3
 
 ---
 
@@ -2346,7 +2479,7 @@ ggplot(toy_data) +
   geom_point(aes(letters, values))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-19-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-50-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -2360,7 +2493,7 @@ toy_data |&gt;
   geom_point(aes(letters, values))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-20-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-51-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -2432,15 +2565,9 @@ visualization principles are you drawing from?
 
 ### Announcements
 
-1. Due Dates 
-  - HW4 is due **May 6**.
-  - Project Milestone 3 is due **May 6**
-1. Logistics
-  - The TAs office hours are being held on Zoom.
-  - There will be no class on **May 2**.
-
-
-
+1. Assignments
+  - HW4
+  - Project Milestone 3
 
 ---
 
@@ -2471,13 +2598,10 @@ LLM.
 
 ### Announcements
 
-1. Due Dates 
-  - HW4 is due **May 6**.
-  - Project Milestone 3 is due **May 6**
+1. Assignments
+  - HW4
+  - Project Milestone 3
 1. Logistics
-  - The TAs office hours are being held on Zoom.
-  - There will be no class on **May 2**.
-  - Friday office hours -- only on Zoom
 1. I encourage you to review the HW3 solutions.
 
 ---
@@ -2635,8 +2759,6 @@ tinkering, and visual explanations.
 about data. Use your skills to help!
 
 ---
-
-Starter code and solutions on Canvas.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
