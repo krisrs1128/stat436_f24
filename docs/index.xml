@@ -7,7 +7,34 @@
     <description>STAT 436 (Fall 2024)
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sun, 21 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Tidy Data</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-01</link>
+      <description>The definition of tidy data, and why it's often helpful for visualization._</description>
+      <guid>https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-01</guid>
+      <pubDate>Thu, 29 Aug 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-01/2024-12-27-week02-01_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Pivoting</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-02</link>
+      <description>Tools for reshaping data into tidy format.</description>
+      <guid>https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-02</guid>
+      <pubDate>Thu, 29 Aug 2024 00:00:00 +0000</pubDate>
+      <media:content url="https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-02/2024-12-27-week02-02_files/figure-html5/unnamed-chunk-6-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Deriving Variables</title>
+      <dc:creator>Kris Sankaran</dc:creator>
+      <link>https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-03</link>
+      <description>Using `separate`, `mutate`, and `summarise` to derive new variables for
+downstream visualization.</description>
+      <guid>https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-03</guid>
+      <pubDate>Thu, 29 Aug 2024 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Hierarchical Clustering</title>
       <dc:creator>Kris Sankaran</dc:creator>
@@ -159,33 +186,6 @@ simple scatterplot.</description>
       <guid>https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week01-02</guid>
       <pubDate>Sun, 07 Jan 2024 00:00:00 +0000</pubDate>
       <media:content url="https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week01-02/2024-12-27-week01-02_files/figure-html5/unnamed-chunk-4-1.png" medium="image" type="image/png" width="1248" height="960"/>
-    </item>
-    <item>
-      <title>Tidy Data</title>
-      <dc:creator>Kris Sankaran</dc:creator>
-      <link>https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-01</link>
-      <description>The definition of tidy data, and why it's often helpful for visualization._</description>
-      <guid>https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-01</guid>
-      <pubDate>Sun, 07 Jan 2024 00:00:00 +0000</pubDate>
-      <media:content url="https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-01/2024-12-27-week02-01_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
-    </item>
-    <item>
-      <title>Pivoting</title>
-      <dc:creator>Kris Sankaran</dc:creator>
-      <link>https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-02</link>
-      <description>Tools for reshaping data into tidy format.</description>
-      <guid>https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-02</guid>
-      <pubDate>Sun, 07 Jan 2024 00:00:00 +0000</pubDate>
-      <media:content url="https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-02/2024-12-27-week02-02_files/figure-html5/unnamed-chunk-6-1.png" medium="image" type="image/png" width="1248" height="768"/>
-    </item>
-    <item>
-      <title>Deriving Variables</title>
-      <dc:creator>Kris Sankaran</dc:creator>
-      <link>https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-03</link>
-      <description>Using `separate`, `mutate`, and `summarise` to derive new variables for
-downstream visualization.</description>
-      <guid>https://krisrs1128.github.io/stat436_s24/website/stat436_f24/posts/2024-12-27-week02-03</guid>
-      <pubDate>Sun, 07 Jan 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Tidy Data Example</title>
