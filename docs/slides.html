@@ -399,11 +399,15 @@ these in the next lecture).
 
 ### Announcements
 
+* Nathan's OH have been set to Mondays 12-2pm in Medical Sciences Center B315A
 * Upcoming Deadlines
   - Project Milestone 0
   - Project Milestone 1
   - HW1
 * Sign-up with your team on the visualization shares schedule.
+
+---
+
 
 ---
 
@@ -523,25 +527,19 @@ ggplot(mtcars) +
 
 
 ---
-exclude: true
+
+### Exercise Review 2 - 1
+
+How does `str_extract` work?
+
+&lt;img src="figure/confusion/2-1-3.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
 
 ### Exercise Review 2 - 1 
 
 The plants demo used a regular expression ("regex") to extract the day number from the column names. 
 
-
-``` r
-plants_reshaped &lt;- plants |&gt; 
-  pivot_longer(starts_with("height")) |&gt; 
-  mutate(day = str_extract(name, "[0-9]+")) #??? 
-```
-
-
----
-exclude: true
-
-
-### Exercise Review 2 - 1 
 
 ``` r
 str_extract("height.14", "[0-9]") 
@@ -552,7 +550,6 @@ str_extract("height.14", "[0-9]")
 ```
 
 ---
-exclude: true
 
 ### Exercise Review 2 - 1 
 
@@ -566,7 +563,6 @@ str_extract("height.14", "[0-9]+")
 ```
 
 ---
-exclude: true
 
 ### Exercise Review 2 - 1 
 
@@ -580,7 +576,6 @@ str_extract("height.14.test.21", "[0-9]+")
 ```
 
 ---
-exclude: true
 
 ### Exercise Review 2 - 1 
 
@@ -595,12 +590,20 @@ str_extract_all("height.14.test.21", "[0-9]+")
 ```
 
 Hint: https://regexr.com/ is useful for learning and testing regexes. 
+
 ---
-exclude: true
+
+### Exercise Review 2 - 1
+
+More details about `starts_with()` and `interaction()`?
+
+&lt;img src="figure/confusion/2-1-2.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
 
 ### Exercise Review 2 - 1 
 
-* The first two arguments (`day` and `value`) always define the x and y axes in any ggplot layer 
+* `starts_with()` selects any columns that that match a condition. Here, it says which columns to collapse into a new "name" column.
 * `interaction` defines a temporary factor variable that looks at all combinations 
 
 
@@ -613,7 +616,6 @@ ggplot(plants_reshaped) +
 to `plantid x treatment` combinations. 
 
 ---
-exclude: true
 
 ### Exercise Review 2 - 1 
 
@@ -628,6 +630,88 @@ interaction(1:4, c("a", "b", "c"))
 ```
 
 ---
+
+
+### Exercise Review 2 - 1
+
+&lt;img src="figure/confusion/2-1-4.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Exercise Review 2 - 1
+
+1. If we are going to apply the same data transformation to many datasets, then
+it's worth encapsulating it into a function.
+
+1. Whenever I'm tempted to copy and paste code, I think of writing a function.
+
+
+``` r
+table4a |&gt;
+    pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "cases")
+
+table4b |&gt;
+    pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "population")
+```
+
+---
+
+### Exercise Review 2 - 1
+
+1. If we are going to apply the same data transformation to many datasets, then
+it's worth encapsulating it into a function.
+
+1. Whenever I'm tempted to copy and paste code, I think of writing a function.
+
+
+``` r
+pivot_fun &lt;- function(x, value_column = "cases") {
+  x %&gt;%
+    pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = value_column)
+}
+
+pivot_fun(table4a)
+pivot_fun(table4b, "population")
+```
+
+---
+
+### Exercise Review 2 - 1
+
+&lt;img src="figure/confusion/2-1-1.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Exercise Review 2 - 1
+
+These are age ranges! E.g., "1524" means ages "15 - 24."
+
+
+``` r
+head(who)
+```
+
+```
+## # A tibble: 6 × 60
+##   country     iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534 new_sp_m3544 new_sp_m4554
+##   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
+## 1 Afghanistan AF    AFG    1980          NA           NA           NA           NA           NA
+## 2 Afghanistan AF    AFG    1981          NA           NA           NA           NA           NA
+## 3 Afghanistan AF    AFG    1982          NA           NA           NA           NA           NA
+## 4 Afghanistan AF    AFG    1983          NA           NA           NA           NA           NA
+## 5 Afghanistan AF    AFG    1984          NA           NA           NA           NA           NA
+## 6 Afghanistan AF    AFG    1985          NA           NA           NA           NA           NA
+## # ℹ 51 more variables: new_sp_m5564 &lt;dbl&gt;, new_sp_m65 &lt;dbl&gt;, new_sp_f014 &lt;dbl&gt;, new_sp_f1524 &lt;dbl&gt;,
+## #   new_sp_f2534 &lt;dbl&gt;, new_sp_f3544 &lt;dbl&gt;, new_sp_f4554 &lt;dbl&gt;, new_sp_f5564 &lt;dbl&gt;,
+## #   new_sp_f65 &lt;dbl&gt;, new_sn_m014 &lt;dbl&gt;, new_sn_m1524 &lt;dbl&gt;, new_sn_m2534 &lt;dbl&gt;,
+## #   new_sn_m3544 &lt;dbl&gt;, new_sn_m4554 &lt;dbl&gt;, new_sn_m5564 &lt;dbl&gt;, new_sn_m65 &lt;dbl&gt;,
+## #   new_sn_f014 &lt;dbl&gt;, new_sn_f1524 &lt;dbl&gt;, new_sn_f2534 &lt;dbl&gt;, new_sn_f3544 &lt;dbl&gt;,
+## #   new_sn_f4554 &lt;dbl&gt;, new_sn_f5564 &lt;dbl&gt;, new_sn_f65 &lt;dbl&gt;, new_ep_m014 &lt;dbl&gt;,
+## #   new_ep_m1524 &lt;dbl&gt;, new_ep_m2534 &lt;dbl&gt;, new_ep_m3544 &lt;dbl&gt;, new_ep_m4554 &lt;dbl&gt;, …
+```
+
+---
+
 exclude: true
 
 ### Exercise Review 2 - 1 
@@ -640,7 +724,7 @@ ggplot(plants_long) +
   geom_point(aes(time, height))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-16-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-22-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: true
@@ -654,20 +738,7 @@ ggplot(plants_long) +
   theme(axis.text.x = element_text(angle = 90))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-17-1.png" width="650" style="display: block; margin: auto;" /&gt;
-
----
-
-### In-Class Demo [2 - 2]
-
-We will work through [Olympics Derivations] in the exercises sheet.
-
-Live Demos: https://go.wisc.edu/r7ni5s
-Live Demos: https://go.wisc.edu/r7ni5s
-* Live Demo: https://go.wisc.edu/
-* Whiteboard: https://go.wisc.edu/
-
-Starter code and solutions on Canvas.
+&lt;img src="slides_files/figure-html/unnamed-chunk-23-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -678,6 +749,15 @@ linked under "Discussion [2 - 2]" on Canvas.
 
 &gt; Critique one of the three visualizations discussed in [Critique - Infographic] or [Critique - Science Paper] of the Exercise Sheet. Respond to all parts of the problem description.
 
+---
+
+### In-Class Demo [2 - 2]
+
+We will work through [Olympics Derivations] in the exercises sheet.
+
+Live Demos: https://go.wisc.edu/r7ni5s
+
+Starter code and solutions on Canvas.
 
 ---
 
@@ -764,7 +844,7 @@ ggplot(ikea) +
   geom_jitter(aes(category, price))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-19-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-25-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: true
@@ -777,7 +857,7 @@ ggplot(ikea) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-20-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-26-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: true
@@ -793,7 +873,7 @@ ggplot(ikea) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-21-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-27-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: true
@@ -807,7 +887,7 @@ ggplot(ikea) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-22-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-28-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: true
@@ -829,7 +909,7 @@ ggplot(ikea) +
   )
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-23-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-29-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: true
@@ -850,7 +930,7 @@ ggplot(ikea, aes(reorder(category, price), price)) +
   )
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-24-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-30-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -920,7 +1000,7 @@ p &lt;- ggplot(ikea) +
 p
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-25-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-31-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: true
@@ -938,7 +1018,7 @@ exclude: true
 p + facet_grid(category ~ .)
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-26-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-32-1.png" width="650" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -958,7 +1038,7 @@ exclude: true
 p + facet_wrap(~ category)
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-27-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-33-1.png" width="650" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -973,7 +1053,7 @@ The only plot with different `\(y\)`-axes per facet is plot (iii).
 p + facet_wrap(~ category, scales = "free_y")
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-28-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-34-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: true
@@ -1000,7 +1080,7 @@ sorted from those with the lowest to those with the highest average price.
 p + facet_wrap(~ reorder(category, price))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-30-1.png" width="600" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-36-1.png" width="600" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1484,7 +1564,7 @@ exclude: true
 Filter to `region == "global"`, and make a `gg_season` plot by month. Comment
 on the what you see.
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-34-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-40-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: true
@@ -1750,7 +1830,7 @@ tourism |&gt;
   gg_lag(y = Trips)
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-37-1.png" width="700" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-43-1.png" width="700" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1817,7 +1897,7 @@ tm_shape(lakes) +
   tm_polygons()
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-39-1.png" width="1400" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-45-1.png" width="1400" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1861,7 +1941,7 @@ tm_shape(landsat) +
   tm_rgb()
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-41-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-47-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1873,7 +1953,7 @@ tm_shape(landsat) +
   tm_rgb(r = 15, g = 15, b = 15, max.value = 75)
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-42-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-48-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -2485,7 +2565,7 @@ ggplot(toy_data) +
   geom_point(aes(letters, values))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-50-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-56-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -2499,7 +2579,7 @@ toy_data |&gt;
   geom_point(aes(letters, values))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-51-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-57-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
