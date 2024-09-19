@@ -497,7 +497,7 @@ ggplot(mtcars) +
    geom_point(aes(mpg, hp))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-5-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: true
@@ -519,7 +519,7 @@ ggplot(mtcars) +
   geom_point(aes(mpg, hp))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -690,21 +690,21 @@ head(who)
 
 ```
 ## # A tibble: 6 × 60
-##   country     iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534 new_sp_m3544 new_sp_m4554
-##   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
-## 1 Afghanistan AF    AFG    1980          NA           NA           NA           NA           NA
-## 2 Afghanistan AF    AFG    1981          NA           NA           NA           NA           NA
-## 3 Afghanistan AF    AFG    1982          NA           NA           NA           NA           NA
-## 4 Afghanistan AF    AFG    1983          NA           NA           NA           NA           NA
-## 5 Afghanistan AF    AFG    1984          NA           NA           NA           NA           NA
-## 6 Afghanistan AF    AFG    1985          NA           NA           NA           NA           NA
-## # ℹ 51 more variables: new_sp_m5564 &lt;dbl&gt;, new_sp_m65 &lt;dbl&gt;, new_sp_f014 &lt;dbl&gt;, new_sp_f1524 &lt;dbl&gt;,
-## #   new_sp_f2534 &lt;dbl&gt;, new_sp_f3544 &lt;dbl&gt;, new_sp_f4554 &lt;dbl&gt;, new_sp_f5564 &lt;dbl&gt;,
-## #   new_sp_f65 &lt;dbl&gt;, new_sn_m014 &lt;dbl&gt;, new_sn_m1524 &lt;dbl&gt;, new_sn_m2534 &lt;dbl&gt;,
-## #   new_sn_m3544 &lt;dbl&gt;, new_sn_m4554 &lt;dbl&gt;, new_sn_m5564 &lt;dbl&gt;, new_sn_m65 &lt;dbl&gt;,
-## #   new_sn_f014 &lt;dbl&gt;, new_sn_f1524 &lt;dbl&gt;, new_sn_f2534 &lt;dbl&gt;, new_sn_f3544 &lt;dbl&gt;,
-## #   new_sn_f4554 &lt;dbl&gt;, new_sn_f5564 &lt;dbl&gt;, new_sn_f65 &lt;dbl&gt;, new_ep_m014 &lt;dbl&gt;,
-## #   new_ep_m1524 &lt;dbl&gt;, new_ep_m2534 &lt;dbl&gt;, new_ep_m3544 &lt;dbl&gt;, new_ep_m4554 &lt;dbl&gt;, …
+##   country iso2  iso3   year new_sp_m014 new_sp_m1524 new_sp_m2534 new_sp_m3544 new_sp_m4554 new_sp_m5564 new_sp_m65
+##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;
+## 1 Afghan… AF    AFG    1980          NA           NA           NA           NA           NA           NA         NA
+## 2 Afghan… AF    AFG    1981          NA           NA           NA           NA           NA           NA         NA
+## 3 Afghan… AF    AFG    1982          NA           NA           NA           NA           NA           NA         NA
+## 4 Afghan… AF    AFG    1983          NA           NA           NA           NA           NA           NA         NA
+## 5 Afghan… AF    AFG    1984          NA           NA           NA           NA           NA           NA         NA
+## 6 Afghan… AF    AFG    1985          NA           NA           NA           NA           NA           NA         NA
+## # ℹ 49 more variables: new_sp_f014 &lt;dbl&gt;, new_sp_f1524 &lt;dbl&gt;, new_sp_f2534 &lt;dbl&gt;, new_sp_f3544 &lt;dbl&gt;,
+## #   new_sp_f4554 &lt;dbl&gt;, new_sp_f5564 &lt;dbl&gt;, new_sp_f65 &lt;dbl&gt;, new_sn_m014 &lt;dbl&gt;, new_sn_m1524 &lt;dbl&gt;,
+## #   new_sn_m2534 &lt;dbl&gt;, new_sn_m3544 &lt;dbl&gt;, new_sn_m4554 &lt;dbl&gt;, new_sn_m5564 &lt;dbl&gt;, new_sn_m65 &lt;dbl&gt;,
+## #   new_sn_f014 &lt;dbl&gt;, new_sn_f1524 &lt;dbl&gt;, new_sn_f2534 &lt;dbl&gt;, new_sn_f3544 &lt;dbl&gt;, new_sn_f4554 &lt;dbl&gt;,
+## #   new_sn_f5564 &lt;dbl&gt;, new_sn_f65 &lt;dbl&gt;, new_ep_m014 &lt;dbl&gt;, new_ep_m1524 &lt;dbl&gt;, new_ep_m2534 &lt;dbl&gt;,
+## #   new_ep_m3544 &lt;dbl&gt;, new_ep_m4554 &lt;dbl&gt;, new_ep_m5564 &lt;dbl&gt;, new_ep_m65 &lt;dbl&gt;, new_ep_f014 &lt;dbl&gt;,
+## #   new_ep_f1524 &lt;dbl&gt;, new_ep_f2534 &lt;dbl&gt;, new_ep_f3544 &lt;dbl&gt;, new_ep_f4554 &lt;dbl&gt;, new_ep_f5564 &lt;dbl&gt;, …
 ```
 
 ---
@@ -721,7 +721,7 @@ ggplot(plants_long) +
   geom_point(aes(time, height))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-22-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-23-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: true
@@ -735,7 +735,7 @@ ggplot(plants_long) +
   theme(axis.text.x = element_text(angle = 90))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-23-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-24-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -820,15 +820,15 @@ head(ikea)
 
 ```
 ## # A tibble: 6 × 14
-##      X1  item_id name  category price old_price sellable_online link  other_colors short_description
-##   &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;lgl&gt;           &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;            
-## 1     0 90420332 FREK… Bar fur…   265 No old p… TRUE            http… No           Bar table, in/ou…
-## 2     1   368814 NORD… Bar fur…   995 No old p… FALSE           http… No           Bar table,      …
-## 3     3 80155205 STIG  Bar fur…    69 No old p… TRUE            http… Yes          Bar stool with b…
-## 4     4 30180504 NORB… Bar fur…   225 No old p… TRUE            http… No           Wall-mounted dro…
-## 5     5 10122647 INGO… Bar fur…   345 No old p… TRUE            http… No           Bar stool with b…
-## 6     6 70404875 FRAN… Bar fur…   129 No old p… TRUE            http… No           Bar stool with b…
-## # ℹ 4 more variables: designer &lt;chr&gt;, depth &lt;dbl&gt;, height &lt;dbl&gt;, width &lt;dbl&gt;
+##      X1  item_id name  category price old_price sellable_online link  other_colors short_description designer depth
+##   &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;lgl&gt;           &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;             &lt;chr&gt;    &lt;dbl&gt;
+## 1     0 90420332 FREK… Bar fur…   265 No old p… TRUE            http… No           Bar table, in/ou… Nichola…    NA
+## 2     1   368814 NORD… Bar fur…   995 No old p… FALSE           http… No           Bar table,      … Francis…    NA
+## 3     3 80155205 STIG  Bar fur…    69 No old p… TRUE            http… Yes          Bar stool with b… Henrik …    50
+## 4     4 30180504 NORB… Bar fur…   225 No old p… TRUE            http… No           Wall-mounted dro… Marcus …    60
+## 5     5 10122647 INGO… Bar fur…   345 No old p… TRUE            http… No           Bar stool with b… Carina …    45
+## 6     6 70404875 FRAN… Bar fur…   129 No old p… TRUE            http… No           Bar stool with b… K Hagbe…    44
+## # ℹ 2 more variables: height &lt;dbl&gt;, width &lt;dbl&gt;
 ```
 
 ---
@@ -842,7 +842,7 @@ ggplot(ikea) +
   geom_jitter(aes(category, price))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-25-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-26-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: false
@@ -855,7 +855,7 @@ ggplot(ikea) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-26-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-27-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: false
@@ -871,7 +871,7 @@ ggplot(ikea) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-27-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-28-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: false
@@ -885,7 +885,7 @@ ggplot(ikea) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-28-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-29-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: false
@@ -907,7 +907,7 @@ ggplot(ikea) +
   )
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-29-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-30-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: false
@@ -928,7 +928,7 @@ ggplot(ikea, aes(reorder(category, price), price)) +
   )
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-30-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-31-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -978,15 +978,17 @@ team members in the submission.
 
 ## Announcements
 
-* Everyone should have a team, and the Visualization Shares schedule
-is finalized.
+* Deadline for Project Milestone 0 (forming teams) extended to Friday 11:59pm.
+  - At that time, we will randomly assign students who are not in groups
+  - If you want to to be randomly assigned before then, please let me know
+* If you have a team, please sign up on the Visualization Shares schedule
   - Please make sure any relevant links are on the sign-up sheet
 * Upcoming Deadlines
   - Project Milestone 1
   - HW1
 
 ---
-exclude: true
+exclude: false
 
 ### Exercise Review
 
@@ -1001,10 +1003,10 @@ p &lt;- ggplot(ikea) +
 p
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-31-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-32-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
-exclude: true
+exclude: false
 
 ### Exercise Review (Part (a))
 
@@ -1019,11 +1021,11 @@ exclude: true
 p + facet_grid(category ~ .)
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-32-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-33-1.png" width="650" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
-exclude: true
+exclude: false
 
 ### Exercise Review (Part (b))
 
@@ -1039,11 +1041,11 @@ exclude: true
 p + facet_wrap(~ category)
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-33-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-34-1.png" width="650" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
-exclude: true
+exclude: false
 
 ### Exercise Review (Part (c))
 
@@ -1054,10 +1056,10 @@ The only plot with different `\(y\)`-axes per facet is plot (iii).
 p + facet_wrap(~ category, scales = "free_y")
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-34-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-35-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
-exclude: true
+exclude: false
 
 ### Exercise Review (Part (d))
 
@@ -1069,7 +1071,7 @@ p + facet_wrap(~ category, axes = "separate")
 ```
 
 ---
-exclude: true
+exclude: false
 
 ### Exercise Review (Part (e))
 
@@ -1081,13 +1083,16 @@ sorted from those with the lowest to those with the highest average price.
 p + facet_wrap(~ reorder(category, price))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-36-1.png" width="600" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-37-1.png" width="600" style="display: block; margin: auto;" /&gt;
 
 ---
 
 ### Today
 
 By the end of class today, you should be able to,
+
+* Describe best practices for making informative and readable compound plots.
+* Use the patchwork package to assemble ggplot2 objects into compound plots.
 
 ---
 
@@ -1565,7 +1570,7 @@ exclude: true
 Filter to `region == "global"`, and make a `gg_season` plot by month. Comment
 on the what you see.
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-40-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-41-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 exclude: true
@@ -1831,7 +1836,7 @@ tourism |&gt;
   gg_lag(y = Trips)
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-43-1.png" width="700" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-44-1.png" width="700" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1871,20 +1876,19 @@ lakes
 ## Bounding box:  xmin: 86.52067 ymin: 27.60735 xmax: 86.98649 ymax: 28.07853
 ## CRS:           NA
 ## # A tibble: 349 × 12
-##    id       Id Latitude Longitude GL_ID           Basin Sub_Basin    Area Elevation Type  Country
-##  * &lt;chr&gt; &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
-##  1 90       NA     27.8      86.6 GL086621E27790N Koshi Dudh Koshi 0.458       5146 M(e)  Nepal  
-##  2 91       NA     27.8      86.6 GL086612E27779N Koshi Dudh Koshi 1.22        4829 M(e)  Nepal  
-##  3 92       NA     27.9      86.9 GL086925E27898N Koshi Dudh Koshi 1.34        5002 M(e)  Nepal  
-##  4 93       NA     27.9      86.7 GL086746E27933N Koshi Dudh Koshi 0.0763      4954 M(e)  Nepal  
-##  5 242      NA     27.8      86.6 GL086617E27795N Koshi Dudh Koshi 0.0142      5183 M(e)  Nepal  
-##  6 243      NA     27.8      86.6 GL086643E27777N Koshi Dudh Koshi 0.296       5161 M(e)  Nepal  
-##  7 244      NA     27.9      86.7 GL086710E27943N Koshi Dudh Koshi 0.0894      4709 I(s)  Nepal  
-##  8 245      NA     27.9      86.7 GL086712E27936N Koshi Dudh Koshi 0.0176      4705 I(s)  Nepal  
-##  9 246      NA     27.9      86.7 GL086710E27937N Koshi Dudh Koshi 0.0465      4701 I(s)  Nepal  
-## 10 247      NA     28.0      86.7 GL086737E27975N Koshi Dudh Koshi 0.0333      5356 M(e)  Nepal  
+##    id       Id Latitude Longitude GL_ID    Basin Sub_Basin   Area Elevation Type  Country                  geometry
+##  * &lt;chr&gt; &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;     &lt;int&gt; &lt;chr&gt; &lt;chr&gt;                   &lt;POLYGON&gt;
+##  1 90       NA     27.8      86.6 GL08662… Koshi Dudh Kos… 0.458       5146 M(e)  Nepal   ((86.62026 27.78673, 86.…
+##  2 91       NA     27.8      86.6 GL08661… Koshi Dudh Kos… 1.22        4829 M(e)  Nepal   ((86.59914 27.78185, 86.…
+##  3 92       NA     27.9      86.9 GL08692… Koshi Dudh Kos… 1.34        5002 M(e)  Nepal   ((86.91271 27.89883, 86.…
+##  4 93       NA     27.9      86.7 GL08674… Koshi Dudh Kos… 0.0763      4954 M(e)  Nepal   ((86.74685 27.93242, 86.…
+##  5 242      NA     27.8      86.6 GL08661… Koshi Dudh Kos… 0.0142      5183 M(e)  Nepal   ((86.61739 27.79616, 86.…
+##  6 243      NA     27.8      86.6 GL08664… Koshi Dudh Kos… 0.296       5161 M(e)  Nepal   ((86.64557 27.77605, 86.…
+##  7 244      NA     27.9      86.7 GL08671… Koshi Dudh Kos… 0.0894      4709 I(s)  Nepal   ((86.70811 27.94264, 86.…
+##  8 245      NA     27.9      86.7 GL08671… Koshi Dudh Kos… 0.0176      4705 I(s)  Nepal   ((86.71282 27.93725, 86.…
+##  9 246      NA     27.9      86.7 GL08671… Koshi Dudh Kos… 0.0465      4701 I(s)  Nepal   ((86.70989 27.93756, 86.…
+## 10 247      NA     28.0      86.7 GL08673… Koshi Dudh Kos… 0.0333      5356 M(e)  Nepal   ((86.73722 27.97435, 86.…
 ## # ℹ 339 more rows
-## # ℹ 1 more variable: geometry &lt;POLYGON&gt;
 ```
 
 ---
@@ -1898,7 +1902,7 @@ tm_shape(lakes) +
   tm_polygons()
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-45-1.png" width="1400" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-46-1.png" width="1400" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1942,7 +1946,7 @@ tm_shape(landsat) +
   tm_rgb()
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-47-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-48-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1954,7 +1958,7 @@ tm_shape(landsat) +
   tm_rgb(r = 15, g = 15, b = 15, max.value = 75)
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-48-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-49-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -2566,7 +2570,7 @@ ggplot(toy_data) +
   geom_point(aes(letters, values))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-56-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-57-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -2580,7 +2584,7 @@ toy_data |&gt;
   geom_point(aes(letters, values))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-57-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-58-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
