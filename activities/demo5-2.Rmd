@@ -7,6 +7,7 @@ output: html_document
 library(shiny)
 library(glue)
 library(bslib)
+library(DT)
 library(tidyverse)
 
 # code to set a clean theme
@@ -86,7 +87,7 @@ ui <- fluidPage(
   fluidRow(
     column(6,
       plotOutput("histogram", brush = brushOpts("plot_brush", direction = "x"), height = 200),
-      dataTableOutput("table")
+      DTOutput("table")
     ),
     column(6, plotOutput("map", brush = "plot_brush", height = 600)),
   ),
@@ -101,7 +102,7 @@ server <- function(input, output) {
   
   output$histogram <- renderPlot(overlay_histogram(rentals, selected()))
   output$map <- renderPlot(scatterplot(rentals, selected()))
-  output$table <- renderDataTable(filter_df(rentals, selected()))
+  output$table <- renderDT(filter_df(rentals, selected()))
 }
 
 shinyApp(ui, server)
