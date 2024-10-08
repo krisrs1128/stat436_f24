@@ -114,7 +114,7 @@ sometimes it comes in handy.
 library(slider)
 smoothed_carbon <- carbon_ts |>
   group_by(country) |>
-  mutate(smoothed = slide_dbl(value, ~ mean(.), .before = 5, .after = 5))
+  mutate(smoothed = slide_dbl(value, mean, .before = 5, .after = 5))
 ggplot(smoothed_carbon) +
   geom_line(aes(year, smoothed, group = country))
 ```
