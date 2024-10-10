@@ -111,3 +111,45 @@ server <- function(input, output) {
 
 shinyApp(ui, server)
 ```
+
+Here is an alternative solution that supports mouseover only for the selected countries.
+
+```{r}
+update_scatter <- function(carbon_trends, selected_) {
+    carbon_trends |>
+        mutate(selected = selected_) |>
+        ggplot() +
+            geom_point(aes(log_spikiness, trend_strength, col = selected_)) +
+            scale_color_manual(values = c("#e4e4e4", "black")) +
+            theme(legend.position = "none")
+}
+
+update_trends <- function(carbon_trends, selected_) {
+    p <- ggplot(carbon_trends, aes(year, smoothed, group = country))
+    if (all(selected_)) {
+        p <- p + geom_line(col = "black")
+    } else if (all(!selected_)) {
+        p <- p + geom_line(col = "#e4e4e4", alpha = 0.3)
+    } else {
+        p <-  p +
+            geom_line(data = filter(carbon_trends, selected_), col = "black") +
+            geom_line(data = filter(carbon_trends, !selected_), col = "#e4e4e4", alpha = 0.3)
+    }
+
+    ggplotly(p) |>
+        style(hoverinfo = "none", traces = 2)
+}
+
+server <- function(input, output) {
+  selected <- reactiveVal(rep(FALSE, nrow(carbon_trends)))
+  observeEvent(
+    input$brush, {
+        selected(brushedPoints(carbon_trends, input$brush, allRows = TRUE)$selected_)
+  })
+  
+  output$scatter <- renderPlot(update_scatter(carbon_trends, selected()))
+  output$trends <- renderPlotly(update_trends(carbon_trends, selected()))
+}
+
+shinyApp(ui, server)
+```
