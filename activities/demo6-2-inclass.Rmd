@@ -1,0 +1,112 @@
+---
+title: "Untitled"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
+```
+
+```{r}
+library(tidyverse)
+library(tsibble)
+library(feasts)
+library(plotly)
+library(slider)
+library(shiny)
+theme_set(theme_bw())
+```
+
+[Global Carbon Footprint Network II] This problem creates interactive versions
+of the carbon emissions dataset introduced in the previous problem.
+
+a. Using `ggplotly`, create a line plot where country names can be revelaed
+on hover.
+
+This code is copied from the previous demo.
+
+```{r}
+carbon <- read_csv("https://go.wisc.edu/7qx7u1")
+carbon_ts <- carbon |>
+  pivot_longer(-c("country", "Country Code"), names_to = "year") |>
+  filter(country != "Switzerland") |>
+  mutate(year = as.integer(year)) |>
+  as_tsibble(index = year, key = country)
+
+smoothed_carbon <- carbon_ts |>
+  group_by(country) |>
+  mutate(smoothed = slide_dbl(value, ~ mean(.), .before = 5, .after = 5)) |>
+  ungroup()
+```
+
+```{r}
+(ggplot(smoothed_carbon) +
+    geom_line(aes(year, smoothed, group = country))) |>
+    ggplotly()
+```
+
+b. Propose an interactive time series visualization that graphically queries a
+time series feature (or several features) that can be generated using the
+`feasts` package. What questions is your visualization particularly well-suited
+to? What questions is it not appropriate for?
+
+```{r}
+trends <- smoothed_carbon |>
+    features(value, feature_set(tag = "trend"))
+trends
+
+carbon_trends <- smoothed_carbon |>
+    left_join(trends) |>
+    mutate(log_spikiness = log(spikiness))
+```
+
+c. Implement your proposal from part (b).
+
+```{r}
+
+scatterplot <- function(df, selected_) {
+    df |>
+        mutate(selected = selected_) |>
+        ggplot() +
+        geom_point(
+            aes(trend_strength, log_spikiness,
+            col = selected)
+        ) + 
+        scale_color_manual(values = c("lightgrey", "black")) +
+        theme(legend.position = "none")
+}
+
+
+trends_plot <- function(df, selected_) {
+    (df |>
+        mutate(selected = selected_) |>
+        ggplot() +
+        geom_line(aes(year, smoothed, group = country, col = selected)) +
+        scale_color_manual(values = c("lightgrey", "black")) +
+        theme(legend.position = "none")) |>
+        ggplotly()
+}
+
+
+ui <- fluidPage(
+  fluidRow(
+    column(6, plotOutput("scatter", brush = "brush")),
+    column(6, plotlyOutput("trends"))
+  )
+)
+
+server <- function(input, output) {
+  selected <- reactiveVal(rep(FALSE, nrow(carbon_trends)))
+  observeEvent(
+    input$brush, {
+      brushed <- brushedPoints(carbon_trends, input$brush, allRows = TRUE)$selected_
+      selected(brushed)
+  })
+  
+  output$scatter <- renderPlot(scatterplot(carbon_trends, selected()))
+  output$trends <- renderPlotly(trends_plot(carbon_trends, selected()))
+}
+
+shinyApp(ui, server)
+```
