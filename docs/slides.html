@@ -1548,9 +1548,9 @@ at some step, describe the difficulty that you encountered.
 ## Week 7 - 1
 
 1. Visualization Shares
-1. In-Class Discussion [7 - 1]
+1. Exercise Review
+1. Practice Midterm Review
 1. In-Class Demo [7 - 1]
-1. In-Class Exercise [7 - 1]
 
 ---
 
@@ -1563,13 +1563,14 @@ at some step, describe the difficulty that you encountered.
   - Reviewing the online course notes.
   - Sketching solutions to problems from the exercise sheet.
   - Practice under time pressure.
+  - Covers material up to Week 6 - 4 notes
 
 ---
-exclude: true
+exclude: false
 
 ### Exercise Review
 
-Let's look at the most streamed song of 2017, which was "Shape of You." The
+We will look at the most streamed song of 2017, which was "Shape of You." The
 dataset
 [here](https://uwmadison.box.com/shared/static/hvplyr3jy6vbt7s80lqgfx81ai4hdl0q.csv)
 contains the number of streams for this song across regions, for each day in
@@ -1595,19 +1596,19 @@ head(song)
 ```
 
 ---
-exclude: true
+exclude: false
 
 ### Exercise Review
 
 
 ``` r
 library(tsibble)
-song_ts &lt;- as_tsibble(song, key = "region", index = "date")
+song_ts &lt;- as_tsibble(song, key = region, index = date, regular = FALSE)
 song_ts
 ```
 
 ```
-## # A tsibble: 19,907 x 5 [1D]
+## # A tsibble: 19,907 x 5 [!]
 ## # Key:       region [54]
 ##    artist     track_name   region date       streams
 ##    &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;  &lt;date&gt;       &lt;dbl&gt;
@@ -1625,17 +1626,17 @@ song_ts
 ```
 
 ---
-exclude: true
+exclude: false
 
 ### Exercise Review
 
 Filter to `region == "global"`, and make a `gg_season` plot by month. Comment
 on the what you see.
 
-
+&lt;img src="slides_files/figure-html/unnamed-chunk-41-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
-exclude: true
+exclude: false
 
 ### Exercise Review
 
@@ -1652,6 +1653,199 @@ song_ts |&gt;
 ```
 
 ---
+exclude: false
+
+### Exercise Review
+
+Provide a scatterplot showing the relationship between the number of streams
+of this song in the US and in Canada. Do the same between the US and Japan.
+Briefly comment.
+    
+
+``` r
+songs_wide &lt;- song_ts |&gt;
+    filter(region %in% c("jp", "ca")) |&gt;
+    pivot_wider(names_from = region, values_from = streams)
+
+head(songs_wide)
+```
+
+```
+## # A tsibble: 6 x 5 [!]
+##   artist     track_name   date           ca    jp
+##   &lt;chr&gt;      &lt;chr&gt;        &lt;date&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1 Ed Sheeran Shape of You 2017-01-06 203788  4639
+## 2 Ed Sheeran Shape of You 2017-01-07 240198  7313
+## 3 Ed Sheeran Shape of You 2017-01-08 235167  8851
+## 4 Ed Sheeran Shape of You 2017-01-09 259084  9827
+## 5 Ed Sheeran Shape of You 2017-01-10 258755 10352
+## 6 Ed Sheeran Shape of You 2017-01-11 258482 10189
+```
+
+---
+
+exclude: false
+
+### Exercise Review
+
+Provide a scatterplot showing the relationship between the number of streams
+of this song in the US and in Canada. Do the same between the US and Japan.
+Briefly comment.
+    
+
+``` r
+ggplot(songs_wide) +
+    geom_point(aes(ca, jp, col = date)) +
+    theme(legend.key.width = unit(1.5, "cm"))
+```
+
+&lt;img src="slides_files/figure-html/unnamed-chunk-44-1.png" width="650" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+exclude: false
+
+### Exercise Review
+
+The dataset
+[here](https://uwmadison.box.com/shared/static/xj4vupjbicw6c8tbhuynw0pll6yh1w0d.csv)
+contains similar data. Read these
+data into a tsibble, keyed by `artist:track_name` and extract features of the
+`streams` time series using the `features` function in the feasts library.
+
+
+``` r
+spotify &lt;- read_csv("https://uwmadison.box.com/shared/static/xj4vupjbicw6c8tbhuynw0pll6yh1w0d.csv") |&gt;
+    as_tsibble(key = artist:track_name, index = date)
+spotify
+```
+
+```
+## # A tsibble: 32,986 x 5 [1D]
+## # Key:       artist, track_name [121]
+##    artist                 track_name                   region date       streams
+##    &lt;chr&gt;                  &lt;chr&gt;                        &lt;chr&gt;  &lt;date&gt;       &lt;dbl&gt;
+##  1 A Boogie Wit da Hoodie Drowning (feat. Kodak Black) global 2017-04-11  463263
+##  2 A Boogie Wit da Hoodie Drowning (feat. Kodak Black) global 2017-04-12  477565
+##  3 A Boogie Wit da Hoodie Drowning (feat. Kodak Black) global 2017-04-13  498475
+##  4 A Boogie Wit da Hoodie Drowning (feat. Kodak Black) global 2017-04-14  527291
+##  5 A Boogie Wit da Hoodie Drowning (feat. Kodak Black) global 2017-04-15  503230
+##  6 A Boogie Wit da Hoodie Drowning (feat. Kodak Black) global 2017-04-16  462189
+##  7 A Boogie Wit da Hoodie Drowning (feat. Kodak Black) global 2017-04-17  514715
+##  8 A Boogie Wit da Hoodie Drowning (feat. Kodak Black) global 2017-04-18  566673
+##  9 A Boogie Wit da Hoodie Drowning (feat. Kodak Black) global 2017-04-19  600067
+## 10 A Boogie Wit da Hoodie Drowning (feat. Kodak Black) global 2017-04-20  632337
+## # ℹ 32,976 more rows
+```
+
+---
+
+exclude: false
+
+### Exercise Review
+
+The dataset
+[here](https://uwmadison.box.com/shared/static/xj4vupjbicw6c8tbhuynw0pll6yh1w0d.csv)
+contains similar data. Read these
+data into a tsibble, keyed by `artist:track_name` and extract features of the
+`streams` time series using the `features` function in the feasts library.
+
+
+``` r
+spotify_features &lt;- spotify |&gt;
+    features(streams, feature_set(tag = "trend"))
+spotify_features
+```
+
+```
+## # A tibble: 121 × 11
+##    artist   track_name trend_strength seasonal_strength_week seasonal_peak_week seasonal_trough_week
+##    &lt;chr&gt;    &lt;chr&gt;               &lt;dbl&gt;                  &lt;dbl&gt;              &lt;dbl&gt;                &lt;dbl&gt;
+##  1 "A Boog… "Drowning…          0.973                  0.765                  1                    3
+##  2 "AJR"    "Weak"              0.996                  0.702                  4                    6
+##  3 "Alan W… "Faded"             0.985                  0.777                  6                    1
+##  4 "Alessi… "How Far …          0.998                  0.682                  4                    1
+##  5 "Alok"   "Hear Me …          0.996                  0.803                  5                    1
+##  6 "Anuel … "Sola (Re…          0.974                  0.832                  5                    3
+##  7 "Ariana… "Side To …          0.998                  0.834                  6                    1
+##  8 "Axwell… "More Tha…          0.988                  0.741                  3                    5
+##  9 "Big Se… "Bounce B…          0.991                  0.593                  6                    1
+## 10 "Bruno … "24K Magi…          0.998                  0.800                  6                    1
+## # ℹ 111 more rows
+## # ℹ 5 more variables: spikiness &lt;dbl&gt;, linearity &lt;dbl&gt;, curvature &lt;dbl&gt;, stl_e_acf1 &lt;dbl&gt;,
+## #   stl_e_acf10 &lt;dbl&gt;
+```
+
+---
+
+exclude: false
+
+### Exercise Review
+
+Which tracks had the highest and lowest `trend_strength`? Visualize their
+streams over the course of the year.
+
+
+``` r
+spotify_features |&gt;
+    select(artist, track_name, trend_strength) |&gt;
+    arrange(-trend_strength)
+```
+
+```
+## # A tibble: 121 × 3
+##    artist       track_name                                                            trend_strength
+##    &lt;chr&gt;        &lt;chr&gt;                                                                          &lt;dbl&gt;
+##  1 The Weeknd   "Starboy"                                                                      0.999
+##  2 ZAYN         "I Don’t Wanna Live Forever (Fifty Shades Darker) - From \"Fifty Sha…          0.998
+##  3 DJ Snake     "Let Me Love You"                                                              0.998
+##  4 Zedd         "Stay (with Alessia Cara)"                                                     0.998
+##  5 Major Lazer  "Cold Water (feat. Justin Bieber &amp; MØ)"                                        0.998
+##  6 Bruno Mars   "That's What I Like"                                                           0.998
+##  7 The Weeknd   "I Feel It Coming"                                                             0.998
+##  8 Clean Bandit "Rockabye (feat. Sean Paul &amp; Anne-Marie)"                                      0.998
+##  9 Future       "Mask Off"                                                                     0.998
+## 10 James Arthur "Say You Won't Let Go"                                                         0.998
+## # ℹ 111 more rows
+```
+
+---
+
+exclude: false
+
+### Exercise Review
+
+Which tracks had the highest and lowest `trend_strength`? Visualize their
+streams over the course of the year.
+
+
+``` r
+spotify_features |&gt;
+    select(artist, track_name, trend_strength) |&gt;
+    arrange(trend_strength)
+```
+
+```
+## # A tibble: 121 × 3
+##    artist          track_name                         trend_strength
+##    &lt;chr&gt;           &lt;chr&gt;                                       &lt;dbl&gt;
+##  1 Eminem          Lose Yourself - Soundtrack Version          0.853
+##  2 Luis Fonsi      Despacito (Featuring Daddy Yankee)          0.883
+##  3 Thomas Rhett    Unforgettable                               0.899
+##  4 Nicky Jam       Si Tú La Ves                                0.909
+##  5 Ed Sheeran      Thinking Out Loud                           0.913
+##  6 Ed Sheeran      Photograph                                  0.953
+##  7 Sia             Cheap Thrills                               0.956
+##  8 Sebastian Yatra Traicionera                                 0.959
+##  9 Piso 21         Me Llamas (feat. Maluma) - Remix            0.965
+## 10 Justin Bieber   Sorry                                       0.970
+## # ℹ 111 more rows
+```
+
+---
+
+exclude: true
 
 ### Today
 
@@ -1662,6 +1856,7 @@ By the end of class today, you should be able to,
 frame.
 
 ---
+exclude: true
 
 ### In-Class Discussion [7 - 1]
 
@@ -1672,6 +1867,12 @@ Discussion link on Canvas.
 
 ---
 
+### Practice Midterm Review
+
+* With your team, respond to the prompts: https://go.wisc.edu/8m3vp0
+  - Link also on Canvas
+
+---
 
 ### In-Class Demo [7 - 1]
 
@@ -1682,6 +1883,8 @@ Live Demos: https://go.wisc.edu/r7ni5s
 If we have time, we'll also show how to create a direct link to these data.
 
 ---
+
+exclude: true
 
 ### In-Class Exercise [7 - 1]
 
@@ -1700,6 +1903,8 @@ purpose for each layer (or related groups of layers).
 
 ---
 
+exclude: true
+
 ## Week 7 - 2
 
 1. In-Class Discussion [7 - 2]
@@ -1707,6 +1912,8 @@ purpose for each layer (or related groups of layers).
 1. In-Class Exercise [7 - 2]
 
 ---
+
+exclude: true
 
 ### Announcements
 
@@ -1719,19 +1926,14 @@ purpose for each layer (or related groups of layers).
 
 ---
 
+exclude: true
+
 ### Today
 
 By the end of class today, you should be able to,
 
 * Integrate leaflet into your Shiny Apps.
 * Use leaflet interactions to guide reactive operations.
-
----
-
-### Practice Midterm Review
-
-* With your team, respond to the prompts: https://go.wisc.edu/8m3vp0
-  - Link also on Canvas
 
 ---
 
@@ -1897,7 +2099,7 @@ tourism |&gt;
   gg_lag(y = Trips)
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-44-1.png" width="700" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-50-1.png" width="700" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1964,7 +2166,7 @@ tm_shape(lakes) +
   tm_polygons()
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-46-1.png" width="1400" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-52-1.png" width="1400" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -2008,7 +2210,7 @@ tm_shape(landsat) +
   tm_rgb()
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-48-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-54-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -2020,7 +2222,7 @@ tm_shape(landsat) +
   tm_rgb(r = 15, g = 15, b = 15, max.value = 75)
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-49-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-55-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -2632,7 +2834,7 @@ ggplot(toy_data) +
   geom_point(aes(letters, values))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-57-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-63-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -2646,7 +2848,7 @@ toy_data |&gt;
   geom_point(aes(letters, values))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-58-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-64-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
