@@ -13,6 +13,7 @@ library(tidyverse)
 library(shiny)
 library(sf)
 library(leaflet)
+library(DT)
 theme_set(theme_bw())
 ```
 

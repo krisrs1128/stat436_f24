@@ -12,6 +12,7 @@ knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
 library(tidyverse)
 library(shiny)
 library(sf)
+library(DT)
 library(leaflet)
 theme_set(theme_bw())
 ```
@@ -44,7 +45,7 @@ ui <- fluidPage(
     column(6, plotOutput("histogram", brush = brushOpts("plot_brush", direction = "x"))),
     column(6, leafletOutput("map"))
   ),
-  dataTableOutput("table")
+  DTOutput("table")
 )
 
 server <- function(input, output) {
@@ -66,7 +67,7 @@ server <- function(input, output) {
   })
   
   # filter the table based on interactions
-  output$table <- renderDataTable({
+  output$table <- renderDT({
     current_lakes <- lakes |>
       filter(selected())
     
