@@ -32,7 +32,7 @@ tree, and nodes are unobserved common ancestor viruses.
 ```{r}
 edges <- read_csv("https://github.com/krisrs1128/stat436_s24/raw/main/data/covid-edges.csv")
 nodes <- read_csv("https://github.com/krisrs1128/stat436_s24/raw/main/data/covid-nodes.csv")
-G <- tbl_graph(edges = edges)
+G <- tbl_graph(edges = edges, nodes = nodes)
 ```
 
 b. Visualize the phylogenetic tree using the data from (a).
