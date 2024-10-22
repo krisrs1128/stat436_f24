@@ -58,10 +58,12 @@ grades |>
 ```
 
 ```{r, eval = FALSE}
+grades <- read_csv("2024-10-21T2336_Grades-FA24_STAT_436_001.csv") |>
+    filter(row_number() > 2) |>
+    mutate(across(starts_with("Midterm"), as.numeric))
 ggplot(grades) +
-  #scale_y_continuous(limits = c(0, 0.1)) +
   scale_x_continuous(expand = c(0, 0)) +
-  geom_dotplot(aes(final_score), binwidth = 0.25, stackratio = 1.2, dotsize = 0.9) +
+  geom_dotplot(aes(`Midterm (2361623)`), stackratio = 1.5, dotsize = 0.45, binwidth = 1) + # , binwidth = 0.25, stackratio = 1.2, dotsize = 0.9) +
   labs(x = "Score", y = "Count") +
   theme(
     axis.text.y = element_blank(),
