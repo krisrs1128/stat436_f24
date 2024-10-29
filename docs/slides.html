@@ -2038,6 +2038,17 @@ By the end of class today, you should be able to,
 
 ---
 
+### Warm-Up
+
+[Network Vis T/F] Select all the true statements about network visualization.
+
+* For large, dense networks, node-link diagrams are preferable to adjacency matrix visualizations.
+* For tasks related to local topology, node-link diagrams are preferable to adjacency matrix visualizations.
+* It is possible to visually encode edge weight in either node-link or adjacency matrix visualizations.
+* It is possible to visually encode node category in either node-link or adjacency matrix visualizations.
+
+---
+
 ### In-Class Demo [8 - 2]
 
 We will work through [Movie Genres] (and, if time, [UK Energy Flow]) in the
@@ -2050,303 +2061,19 @@ Live Demos: https://go.wisc.edu/r7ni5s
 ## Week 9 - 1
 
 1. Visualization Shares
-1. Review Session
 1. In-Class Discussion [9 - 1]
+1. In-Class Demo [9 - 1]
 
 ---
 
 ### Announcements
 
-1. Upcoming Deadlines
+1. Deadlines
   1. Project Milestone 2
   1. Project and Portfolio Peer Reviews
   1. HW3
 
 ---
-
-### Learning Outcome 1
-
-Develop a vocabulary of visual encodings that support exploration of geospatial,
-temporal, tree-structured, and network data, and demonstrate facility
-implementing them using packages in the R programming language.
-
-* tsibble
-* Trends and seasonality, explain lag
-* Vector and raster data
-
----
-
-### tsibble
-
-* Data structures for storing time series data
-* Must include temporal `index` column. This specifies the sampling frequency.
-  * Optionally includes a `key` for working with collections of time series
-
-
-``` r
-library(tsibble)
-head(tourism)
-```
-
-```
-## # A tsibble: 6 x 5 [1Q]
-## # Key:       Region, State, Purpose [1]
-##   Quarter Region   State           Purpose  Trips
-##     &lt;qtr&gt; &lt;chr&gt;    &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt;
-## 1 1998 Q1 Adelaide South Australia Business  135.
-## 2 1998 Q2 Adelaide South Australia Business  110.
-## 3 1998 Q3 Adelaide South Australia Business  166.
-## 4 1998 Q4 Adelaide South Australia Business  127.
-## 5 1999 Q1 Adelaide South Australia Business  137.
-## 6 1999 Q2 Adelaide South Australia Business  200.
-```
-
----
-
-### tsibble
-
-* Why are `data.frames` useful? In theory, couldn't we always use lists of lists?
-* A similar justification applies to `tsibble`. When we can assume more properties, we can write more tailored functions. 
-
----
-
-### tsibble
-
-
-``` r
-library(feasts)
-tourism |&gt;
-  filter(Region == "Alice Springs", Purpose == "Holiday") |&gt;
-  gg_lag(y = Trips)
-```
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-50-1.png" width="700" style="display: block; margin: auto;" /&gt;
-
----
-
-### Time Series properties
-
-From [notes 6 - 2](https://krisrs1128.github.io/stat436_s24/posts/2024-12-27-week06-02/),
-
-* Trend: A long-run increase or decrease in a time series.
-* Seasonal: A pattern that recurs over a fixed and known period.
-* Cyclic: A rising and falling pattern that does not occur over a fixed or known period.
-
----
-
-### Vector Data
-
-See [notes 7 - 1](https://krisrs1128.github.io/stat436_s24/posts/2024-12-27-week07-01/):
-
-* Vector data formats are used to store geometric information (esp. points, lines, and polygons).
-* Can be read in using `read_sf` and visualized using `tm_dots`, `tm_lines`, and `tm_polygons` layers, for example.
-
----
-
-### Vector Data
-
-
-``` r
-library(sf)
-lakes &lt;- read_sf("https://raw.githubusercontent.com/krisrs1128/stat436_s23/main/data/GL_3basins_2015.topojson") |&gt;
-  filter(Sub_Basin == "Dudh Koshi")
-lakes
-```
-
-```
-## Simple feature collection with 349 features and 11 fields
-## Geometry type: POLYGON
-## Dimension:     XY
-## Bounding box:  xmin: 86.52067 ymin: 27.60735 xmax: 86.98649 ymax: 28.07853
-## CRS:           NA
-## # A tibble: 349 × 12
-##    id       Id Latitude Longitude GL_ID           Basin Sub_Basin    Area Elevation Type  Country
-##  * &lt;chr&gt; &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
-##  1 90       NA     27.8      86.6 GL086621E27790N Koshi Dudh Koshi 0.458       5146 M(e)  Nepal  
-##  2 91       NA     27.8      86.6 GL086612E27779N Koshi Dudh Koshi 1.22        4829 M(e)  Nepal  
-##  3 92       NA     27.9      86.9 GL086925E27898N Koshi Dudh Koshi 1.34        5002 M(e)  Nepal  
-##  4 93       NA     27.9      86.7 GL086746E27933N Koshi Dudh Koshi 0.0763      4954 M(e)  Nepal  
-##  5 242      NA     27.8      86.6 GL086617E27795N Koshi Dudh Koshi 0.0142      5183 M(e)  Nepal  
-##  6 243      NA     27.8      86.6 GL086643E27777N Koshi Dudh Koshi 0.296       5161 M(e)  Nepal  
-##  7 244      NA     27.9      86.7 GL086710E27943N Koshi Dudh Koshi 0.0894      4709 I(s)  Nepal  
-##  8 245      NA     27.9      86.7 GL086712E27936N Koshi Dudh Koshi 0.0176      4705 I(s)  Nepal  
-##  9 246      NA     27.9      86.7 GL086710E27937N Koshi Dudh Koshi 0.0465      4701 I(s)  Nepal  
-## 10 247      NA     28.0      86.7 GL086737E27975N Koshi Dudh Koshi 0.0333      5356 M(e)  Nepal  
-## # ℹ 339 more rows
-## # ℹ 1 more variable: geometry &lt;POLYGON&gt;
-```
-
----
-
-### Vector Data
-
-
-``` r
-library(tmap)
-tm_shape(lakes) +
-  tm_polygons()
-```
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-52-1.png" width="1400" style="display: block; margin: auto;" /&gt;
-
----
-
-### Raster Data
-
-See [notes 7 - 1](https://krisrs1128.github.io/stat436_s24/posts/2024-12-27-week07-01/):
-
-* Raster data are measured along an even spatial grid.
-* They can be read in using `rast` in the terra library and visualized using `tm_rgb`.
-
----
-
-### Raster Data
-
-
-``` r
-library(terra)
-landsat &lt;- rast("https://github.com/krisrs1128/stat436_s24/raw/main/data/LE07_140041_20071221-subset.tif")
-landsat
-```
-
-```
-## class       : SpatRaster 
-## dimensions  : 1601, 1662, 15  (nrow, ncol, nlyr)
-## resolution  : 0.0002973394, 0.0002973394  (x, y)
-## extent      : 86.51314, 87.00732, 27.63608, 28.11212  (xmin, xmax, ymin, ymax)
-## coord. ref. : lon/lat WGS 84 (EPSG:4326) 
-## source      : LE07_140041_20071221-subset.tif 
-## names       : LE07_~set_1, LE07_~set_2, LE07_~set_3, LE07_~set_4, LE07_~set_5, LE07_~set_6, ... 
-## min values  :          35,          21,          15,          12,           3,          45, ... 
-## max values  :         255,         255,         255,         255,         255,         177, ...
-```
-
----
-
-### Raster Data
-
-
-``` r
-tm_shape(landsat) +
-  tm_rgb()
-```
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-54-1.png" width="650" style="display: block; margin: auto;" /&gt;
-
----
-
-### Raster Data
-
-
-``` r
-tm_shape(landsat) +
-  tm_rgb(r = 15, g = 15, b = 15, max.value = 75)
-```
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-55-1.png" width="650" style="display: block; margin: auto;" /&gt;
-
----
-
-### Learning Outcome 2
-
-Design dynamic queries that support interactive visualization of
-heterogeneous data, and demonstrate facility implementing them using the shiny
-package in the R programming language.
-
-* Reactivity in Shiny
-* How to write out Shiny code
-* Brushing in Shiny
-
----
-
-### Reactivity
-
-From _Mastering Shiny_
-
-&gt; The key idea of reactive programming is to specify a graph of dependencies so that when an input changes, all related outputs are automatically updated.
-
-The execution of reactive code depends on the user's inputs.
-
----
-
-### Reactivity
-
-For any type of interactive visualization (in Shiny or otherwise), it's worth
-thinking carefully about the reactive graph:
-
-* What are potential user inputs?
-* What outputs needs to be changed in response?
-* How do intermediate data structures need to be changed?
-
----
-
-### Reactivity
-
-&lt;iframe src="https://connect.doit.wisc.edu/content/dc907aa5-090e-410e-8f9f-6bdb19befc75/" allowfullscreen="" data-external="1" height=500 width=800&gt;&lt;/iframe&gt;
-
----
-
-### Reactivity
-
-&lt;img src="https://raw.githubusercontent.com/krisrs1128/stat479_s22/main/_posts/2022-02-10-week04-02/figures/reactive_histo.png" width=800&gt;
-&lt;/img&gt;
-
----
-
-### Brushing
-
-The usual recipe for is:
-
-* Ensure the `plotOutput` is given a `brush`.
-  - Optionally, use `brushOpts` to constrain brush direction
-* Define a `reactiveVal` to store updated brush selections
-* Create an `observeEvent` to check for brush events and update the `reactiveVal` above using `brushedPoints`
-
----
-
-### Brushing
-
-From the [week 5 - 2 notes](https://krisrs1128.github.io/stat436_s24/posts/2024-12-27-week05-02/).
-
-
-``` r
-ui &lt;- fluidPage(
-   plotOutput("plot", brush = "plot_brush")
- )
-```
-
----
-
-### Brushing
-
-From the [week 5 - 2 notes](https://krisrs1128.github.io/stat436_s24/posts/2024-12-27-week05-02/).
-
-
-``` r
-server &lt;- function(input, output) {
-  selected &lt;- reactiveVal(initial value)
-  observeEvent(
-    input$plot_brush,
-    ... computation using get new_value ...
-    selected(new_value)
-  )
-
-  output$plot &lt;- renderPlot(... use scatter() reactive val...)
-}
-```
-
----
-
-### Learning Outcome 5
-
-Evaluate strengths and weaknesses of visualizations in relation to the tasks
-they support.
-
-* How to decide what type of visualization you should make by looking at the data.
-
----
-
-exclude: True
 
 ### Visualization Design/Critique
 
@@ -2363,8 +2090,6 @@ How to decide what type of visualization you should make by looking at the data.
 
 ---
 
-exclude: True
-
 ### Visualization Design/Critique
 
 Determine visual encodings using data type + prioritization
@@ -2379,15 +2104,11 @@ For example, if we had a categorical + continuous variable, we could consider:
 
 ---
 
-exclude: True
-
 ### Visualization Design/Critique
 
 &lt;img src="figure/channels.png" width=750/&gt;
 
 ---
-
-exclude: True
 
 ### Visualization Design/Critique
 
@@ -2396,6 +2117,25 @@ When critiquing, ask:
   * Which laborious/require calculation?
 
 &lt;img src="figure/popout.png"/&gt;
+
+---
+
+### In-Class Discussion [9 - 1]
+
+[Clustering Interpretation] Imagine that you are sharing the results of a
+K-means analysis with a collaborator who is comfortable with scientific
+reasoning, but who is not trained in statistics.
+
+* What are the main outputs from K-means clustering? In your own words, how do you interpret them?
+* Give one example of a situation/type of question where K-means clustering would be useful, and give one example where it would not. Explain your reasoning.
+
+---
+
+### In-Class Demo [9 - 2]
+
+We will work through [Women, Business, and the Law] in the exercise sheet.
+
+Live Demos: https://go.wisc.edu/r7ni5s
 
 ---
 
@@ -2863,7 +2603,7 @@ ggplot(toy_data) +
   geom_point(aes(letters, values))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-63-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-54-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -2877,7 +2617,7 @@ toy_data |&gt;
   geom_point(aes(letters, values))
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-64-1.png" width="650" style="display: block; margin: auto;" /&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-55-1.png" width="650" style="display: block; margin: auto;" /&gt;
 
 ---
 
