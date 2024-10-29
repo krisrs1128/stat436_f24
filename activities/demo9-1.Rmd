@@ -35,7 +35,7 @@ corresponds to a single country $\times$ year combination.
 
 ```{r}
 # read in and create a codebook
-survey <- read_csv("https://github.com/krisrs1128/stat479_s22/blob/main/_slides/week9/exercises/Viz5-July-2020-economic-empowerement.csv?raw=true")
+survey <- read_csv("https://github.com/krisrs1128/stat992_f23/raw/main/exercises/data/Viz5-July-2020-economic-empowerement.csv")
 question_mapping <- survey |>
   select(Question, `Question Category`) |>
   distinct() |>
