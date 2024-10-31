@@ -66,20 +66,8 @@ b. We could hierarchically cluster rows in either the `wide` or the `long`
 format datasets. How would the interpretation of the results differ between the
 two approaches?
 
-If we hierarchically clustered the `long` dataset, then a trip might be split
-into different clusters. The resulting clusters would be related to the
-geographical positions of each trip timepoint, rather than the shape of the
-overall trajectory.
-
-On the other hand, clustering the `wide` dataset will identify trajectories that
-have similar overall shapes. For example, we would expect this approach to
-identify main highways in the city, or common origin-destination pairs.
-
 c. Compute a hierarchical clustering of the `wide` format data, using only the
 columns starting with `x` or `y` as features.
-
-The `dist` function below computes the pairwise distances between trajectories,
-and this is then fed into a hierarchical clustering routine.
 
 ```{r}
 # test the code using a subset of data
@@ -94,7 +82,7 @@ cluster.
 ```{r, fig.cap = "An example result for problem 3(c). A small amount of jitter has been added, to make the larger highways more clearly visible.", fig.width = 8, dev = "png", dpi = 1200}
 # ggplot(trips) +
 #   geom_point(
-#     aes(x = x, y = y, col = as.factor(cluster)),
+#     aes(x, y, col = as.factor(cluster)),
 #     size = 0.1, alpha = 0.05, position = position_jitter(w = 0.0005, h = 0.0005)
 #   ) +
 #   scale_color_brewer(palette = "Set2") +
@@ -102,3 +90,4 @@ cluster.
 #   guides(color = guide_legend(override.aes = list(size = 2, alpha = 1))) +
 #   labs(x = "Longitude", y = "Latitude", col = "Cluster")
 ```
+
