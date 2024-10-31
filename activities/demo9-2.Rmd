@@ -105,7 +105,7 @@ trips <- trips |>
 
 ggplot(trips) +
   geom_point(
-    aes(x = x, y = y, col = as.factor(cluster)),
+    aes(x, y, col = as.factor(cluster)),
     size = 0.1, alpha = 0.05, position = position_jitter(w = 0.0005, h = 0.0005)
   ) +
   scale_color_brewer(palette = "Set2") +
