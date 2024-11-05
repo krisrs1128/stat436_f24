@@ -12,7 +12,7 @@ knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
 library(tidyverse)
 library(tidymodels)
 th <- theme_minimal() + 
-  theme
+  theme(
     panel.grid.minor = element_blank(),
     panel.background = element_rect(fill = "#f7f7f7"),
     panel.border = element_rect(fill = NA, color = "#0c0c0c"),
@@ -38,10 +38,7 @@ nutrients
 a. Define a tidymodels `recipe` that normalizes all nutrient features and run PCA.
 
 ```{r}
-pca_recipe <- recipe(~ ., data = nutrients) |>
-  update_role(name, id, starts_with("group"), new_role = "id") |>
-  step_normalize(all_predictors()) |>
-  step_pca(all_predictors())
+# pca_recipe <- recipe(... ??
 
 pca_prep <- prep(pca_recipe)
 ```
@@ -59,7 +56,7 @@ tidy(pca_prep, 2) |>
       axis.text = element_text(size = 16),
       strip.text = element_text(size = 16),
       axis.title = element_text(size = 20)
-      )
+    )
 
 ```
 
@@ -84,4 +81,3 @@ ggplot(scores) +
   scale_color_brewer(palette = "Set3") +
   facet_wrap(~ reorder(group, PC2))
 ```
-
