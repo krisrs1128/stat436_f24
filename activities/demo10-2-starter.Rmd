@@ -12,16 +12,16 @@ knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
 library(tidyverse)
 library(embed)
 library(tidymodels)
-th <- theme_minimal() + 
-  theme(
-    panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "#f7f7f7"),
-    panel.border = element_rect(fill = NA, color = "#0c0c0c"),
-    axis.text = element_text(size = 14),
-    axis.title = element_text(size = 16),
-    strip.text = element_text(size = 16),
-    legend.position = "bottom"
-  )
+th <- theme_minimal() +
+    theme(
+        panel.grid.minor = element_blank(),
+        panel.background = element_rect(fill = "#f7f7f7"),
+        panel.border = element_rect(fill = NA, color = "#0c0c0c"),
+        axis.text = element_text(size = 14),
+        axis.title = element_text(size = 16),
+        strip.text = element_text(size = 16),
+        legend.position = "bottom"
+    )
 theme_set(th)
 ```
 
@@ -39,7 +39,7 @@ tailored to single-cell genomics data.
 
 ```{r}
 pbmc <- read_csv("https://uwmadison.box.com/shared/static/ai539s30rjsw5ke4vxbjrxjaiihq7edk.csv")
-# umap_rec <- 
+# umap_rec <-
 ```
 
 b. Compute the UMAP embeddings across cells. Color points in by their value of

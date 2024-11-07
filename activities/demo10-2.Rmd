@@ -12,16 +12,16 @@ knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
 library(tidyverse)
 library(embed)
 library(tidymodels)
-th <- theme_minimal() + 
-  theme(
-    panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "#f7f7f7"),
-    panel.border = element_rect(fill = NA, color = "#0c0c0c"),
-    axis.text = element_text(size = 14),
-    axis.title = element_text(size = 16),
-    strip.text = element_text(size = 16),
-    legend.position = "bottom"
-  )
+th <- theme_minimal() +
+    theme(
+        panel.grid.minor = element_blank(),
+        panel.background = element_rect(fill = "#f7f7f7"),
+        panel.border = element_rect(fill = NA, color = "#0c0c0c"),
+        axis.text = element_text(size = 14),
+        axis.title = element_text(size = 16),
+        strip.text = element_text(size = 16),
+        legend.position = "bottom"
+    )
 theme_set(th)
 ```
 
@@ -40,8 +40,8 @@ tailored to single-cell genomics data.
 ```{r}
 pbmc <- read_csv("https://uwmadison.box.com/shared/static/ai539s30rjsw5ke4vxbjrxjaiihq7edk.csv")
 umap_rec <- recipe(~., data = pbmc) |>
-  update_role(cell_tag, new_role = "id") |>
-  step_umap(all_predictors(), learn_rate = 0.1, neighbors = 5)
+    update_role(cell_tag, new_role = "id") |>
+    step_umap(all_predictors(), learn_rate = 0.1, neighbors = 5)
 umap_prep <- prep(umap_rec)
 ```
 
@@ -50,9 +50,9 @@ the GNLY molecule.
 
 ```{r}
 scores <- bake(umap_prep, pbmc) |>
-  left_join(pbmc)
+    left_join(pbmc)
 ggplot(scores) +
-  geom_point(aes(UMAP1, UMAP2, col = GNLY), size = 0.5, alpha = 0.4) +
-  scale_color_viridis_c() +
-  coord_fixed()
+    geom_point(aes(UMAP1, UMAP2, col = GNLY), size = 0.5, alpha = 0.4) +
+    scale_color_viridis_c() +
+    coord_fixed()
 ```
