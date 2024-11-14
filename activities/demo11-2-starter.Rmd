@@ -35,7 +35,7 @@ a. Transform the raw reviews into a collection of per-review word counts.
 Remove stopwords from across all lexicons in `tidytext::stopwords`.
 
 ```{r}
-reviews <- read_csv("https://github.com/krisrs1128/stat479_s22/blob/main/_slides/week11/exercises/reviews.csv?raw=true")
+reviews <- read_csv("https://github.com/krisrs1128/stat436_f24/raw/refs/heads/main/data/reviews.csv")
 reviews_dtm <- reviews |>
   unnest_tokens(word, Review) |>
   filter(!(word %in% stop_words$word)) |>
