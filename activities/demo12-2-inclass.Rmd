@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 ---
 
 ```{r, echo = FALSE}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
 ```
 
 ```{r}
@@ -18,7 +18,7 @@ th <- theme_minimal() +
   theme(
     panel.grid.minor = element_blank(),
     panel.background = element_rect(fill = "#f7f7f7"),
-    panel.border = element_rect(fill = NA, color = "#0c0c0c", linewidth = 0.6),
+    panel.border = element_rect(fill = NA, color = "#0c0c0c", size = 0.6),
     axis.text = element_text(size = 14),
     axis.title = element_text(size = 16),
     legend.position = "bottom"
@@ -43,15 +43,13 @@ initial density and tadpole size.
 ```{r}
 x <- read_csv("https://github.com/krisrs1128/stat436_s24/raw/main/data/reedfrogs.csv") |>
   mutate(tank = as.factor(tank))
-x
+
+
+ggplot(x) +
+  geom_point(aes(surv, reorder(tank, surv), col = pred)) +
+  facet_wrap(size ~ density, scales = "free")
 ```
 
-```{r}
-ggplot(x) +
-  geom_point(aes(propsurv, reorder(tank, propsurv), col = pred)) +
-  facet_wrap(size ~ density, scales = "free_y")
-```
-  
 b. The code below fits the following model, where $y_{i}$ represents the
 number of tadpoles that survive in tank $i$, $N_{i}$ is the initial
 tadpole density, and $p_{i}$ is the (unknown) survival probability.
@@ -71,6 +69,8 @@ fit <- brm(
 )
 
 posterior <- as_draws_df(fit)
+
+posterior
 ```
 Make a graded confidence plot of the posterior $p_{i}$ associated with each
 tank. Overlay the tank's original survival probability, and comment on how
@@ -86,21 +86,21 @@ posterior <- posterior |>
   mutate(probability = inv_logit(value)) |>
   mutate(tank = str_extract(variable, "[0-9]+")) |>
   left_join(x)
+
+posterior
+
 ggplot(posterior) +
-  stat_pointinterval(aes(probability, reorder(tank, value), col = pred)) +
-  facet_wrap(size ~ density, scales = "free_y")
+  stat_slab(aes(probability, reorder(tank, value), col = pred, fill = pred)) +
+  facet_wrap(size ~ density, scales = "free")
+
+ggplot(posterior) +
+  stat_pointinterval(aes(probability, reorder(tank, value), col = pred, fill = pred)) +
+  facet_wrap(size ~ density, scales = "free")
+## visualize?
 ```
 
 c. Create a version of the same figure that shows the full posterior
 densities, rather than simply their quantiles.
-
-```{r}
-ggplot(posterior) +
-  stat_slab(aes(probability, reorder(tank, value), col = pred, fill = pred), height = 2) +
-  geom_point(data = x, aes(propsurv, tank), shape = 1) +
-  facet_wrap(size ~ density, scales = "free_y") +
-  theme(axis.text.x = element_text(angle = 90))
-```
 
 d. In assessment of more complex models, it is often interesting to
 visualize samples simulated from the fitted model. If the simulation
@@ -112,33 +112,37 @@ model.
     
 ```{r}
 y_sim <- posterior_predict(fit)
+y_sim <- as.data.frame(y_sim) |>
+  mutate(.draw = row_number()) |>
+  pivot_longer(cols = -".draw", names_to = "tank", values_to = "y_sim") |>
+  mutate(tank = str_extract(tank, "[0-9]+")) |>
+  left_join(x, by = "tank")
+
+y_sim |>
+  filter(.draw <= 40, density == "35") |>
+  ggplot() +
+  stat_dots(aes(y_sim, reorder(tank, y_sim), col = pred, fill = pred), binwidth = 1, dotsize = 0.5) +
+  facet_grid(size ~ ., scales = "free")
+
+y_sim |>
+  #filter(.draw <= 40, density == "35") |>
+  ggplot() +
+  geom_jitter(aes(y_sim, reorder(tank, y_sim), col = pred, fill = pred), position = position_jitter(w = 0.05, h = 0.2), size = 0.4) +
+  facet_wrap(size ~ density, scales = "free")
+
 ```
   
+/generate Make y_sim a tidy data.frame
+
+Save the row number in a column called ".draws"
+Store the original column number explicitly in a column called "tank"
+Join in the original dataset x
+
 Create a static visualization that shows the variation associated with 10 of
 these 4000 hypothetical datasets.
 
-```{r}
-y_sim <- posterior_predict(fit) |>
-  as_tibble() %>%
-  set_names(1:ncol(.)) |>
-  mutate(.draw = row_number()) |>
-  pivot_longer(-.draw, names_to = "tank", values_to = "y_sim") |>
-  left_join(x)
-y_sim |>
-  filter(.draw < 10) |>
-  ggplot() +
-  stat_dots(aes(y_sim, reorder(tank, y_sim), fill = pred, col = pred), dotsize = .5, binwidth = 1) +
-  facet_wrap(size ~ density, scale = "free")
-
-y_sim |>
-  ggplot() +
-    geom_jitter(aes(y_sim, reorder(tank, y_sim), col = pred), position = position_jitter(h = 0.2, w = .3), size = 0.2) +
-    facet_grid(size ~ ., scales = "free")
-```
-
 e. Create an animated hypothetical outcome plot of the same data used in the
 previous part.
-
 
 ```{r}
 p <- y_sim |>
@@ -147,6 +151,5 @@ p <- y_sim |>
   geom_point(aes(y_sim, reorder(tank, y_sim), fill = pred, col = pred)) +
   facet_wrap(size ~ density, scale = "free") +
   transition_time(.draw)
-
-anim_save("animation.gif", p, nframes = 20, height = 5, width = 10, units = "in", res = 450)
+anim_save("animation.gif", p, nframes = 20, fps = 10, height= 5, width = 10, units = "in", res = 450)
 ```
