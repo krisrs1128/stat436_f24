@@ -95,13 +95,98 @@ memberships <- tidy(fit, matrix = "gamma") |>
     document = factor(document, levels = document_order)
   )
 
-
-
-
 memberships
 ggplot(memberships) +
   geom_col(aes(document, gamma, fill = factor(topic), col = factor(topic))) +
   facet_grid(. ~ Rating, scale = "free_x", space = "free_x") +
   scale_fill_brewer(palette = "Set2") +
   scale_color_brewer(palette = "Set2")
+```
+
+```{r}
+memberships |>
+  filter(document %in% unique(document)[1:5]) |>
+  ggplot() +
+  geom_col(aes(document, gamma, fill = factor(topic), col = factor(topic))) +
+  facet_grid(. ~ Rating, scale = "free_x", space = "free_x") +
+  scale_fill_brewer(palette = "Set2") +
+  scale_x_discrete(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_color_brewer(palette = "Set2") +
+  labs(y = "Membership", x = "Document", col = "Topic", fill = "Topic") +
+  theme(
+    strip.text = element_text(size = 20),
+    axis.text = element_text(size = 20),
+    axis.title = element_text(size = 24),
+    legend.title = element_text(size = 24),
+    legend.text = element_text(size = 24)
+  )
+ggsave("~/Desktop/teaching/course_exercises/stat436_f24/figure/mini_memberships.png", width = 12, height = 6)
+
+memberships |>
+  filter(document %in% unique(document)[1:100]) |>
+  mutate(document = factor(document, levels = unique(memberships$document))) |>
+  ggplot() +
+  geom_col(aes(document, gamma, fill = factor(topic), col = factor(topic))) +
+  facet_grid(. ~ Rating, scale = "free_x", space = "free_x") +
+  scale_fill_brewer(palette = "Set2") +
+  scale_x_discrete(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_color_brewer(palette = "Set2") +
+  labs(y = "Membership", x = "Document", col = "Topic", fill = "Topic") +
+  theme(
+    strip.text = element_text(size = 20),
+    axis.text = element_blank(),
+    axis.title = element_text(size = 24),
+    legend.title = element_text(size = 24),
+    legend.text = element_text(size = 20)
+  )
+
+ggsave("~/Desktop/teaching/course_exercises/stat436_f24/figure/mini_memberships-100.png", width = 12, height = 6)
+
+memberships |>
+  filter(document %in% unique(document)[1:100]) |>
+  ggplot() +
+  geom_col(aes(document, gamma, fill = factor(topic), col = factor(topic))) +
+  facet_grid(. ~ Rating, scale = "free_x", space = "free_x") +
+  scale_fill_brewer(palette = "Set2") +
+  scale_x_discrete(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_color_brewer(palette = "Set2") +
+  labs(y = "Membership", x = "Document", col = "Topic", fill = "Topic") +
+  theme(
+    strip.text = element_text(size = 20),
+    axis.text = element_blank(),
+    axis.title = element_text(size = 24),
+    legend.title = element_text(size = 24),
+    legend.text = element_text(size = 20)
+  )
+
+ggsave("~/Desktop/teaching/course_exercises/stat436_f24/figure/mini_memberships-100-sorted.png", width = 12, height = 6)
+
+memberships |>
+  ggplot() +
+  geom_col(aes(document, gamma, fill = factor(topic), col = factor(topic))) +
+  facet_grid(. ~ Rating, scale = "free_x", space = "free_x") +
+  scale_fill_brewer(palette = "Set2") +
+  scale_x_discrete(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_color_brewer(palette = "Set2") +
+  labs(y = "Membership", x = "Document", col = "Topic", fill = "Topic") +
+  theme(
+    strip.text = element_text(size = 20),
+    axis.text = element_blank(),
+    axis.title = element_text(size = 24),
+    legend.title = element_text(size = 24),
+    legend.text = element_text(size = 20)
+  )
+
+ggsave("~/Desktop/teaching/course_exercises/stat436_f24/figure/mini_memberships-all-sorted.png", width = 12, height = 6)
+```
+
+```{r, fig.width = 10, fig.height = 4}
+hclust_result2 <- hclust(dist(fit@gamma[1:100, ]))
+png("~/Desktop/teaching/course_exercises/stat436_f24/figure/mini_memberships_tree.png", width=900, height = 500)
+plot(hclust_result2)#, labels = FALSE, hang = -1)
+dev.off()
 ```
