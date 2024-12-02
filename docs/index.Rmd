@@ -1,5 +1,5 @@
 ---
-title: "STAT 436"
+title: "STAT 436 (Fall 2024)"
 site: distill::distill_website
 listing: posts
 ---
