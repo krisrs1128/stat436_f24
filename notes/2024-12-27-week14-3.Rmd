@@ -48,7 +48,7 @@ a good data scientist should focus on improving the quality of the questions
 asked, even if that means that the answers will be less definitive.
 
 ```{r, fig.cap = "Peng's summary of misplaced priorities in the data science process.", preview = TRUE, out.width = "90%"}
-include_graphics("https://raw.githubusercontent.com/krisrs1128/stat436_s23/main/activities/figure/question_evidence.png")
+include_graphics("https://github.com/krisrs1128/stat436_f24/blob/main/docs/figure/question_evidence.png?raw=true")
 ```
 
 4. What does it mean to ask better questions? Peng argues that better questions
