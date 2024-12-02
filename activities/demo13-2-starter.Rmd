@@ -15,7 +15,7 @@ th <- theme_minimal() +
   theme(
     panel.grid.minor = element_blank(),
     panel.background = element_rect(fill = "#f7f7f7"),
-    panel.border = element_rect(fill = NA, color = "#0c0c0c", size = 0.6),
+    panel.border = element_rect(fill = NA, color = "#0c0c0c", linewidth = 0.6),
     axis.text = element_text(size = 14),
     axis.title = element_text(size = 16),
     legend.position = "bottom"
@@ -80,32 +80,12 @@ library(embed)
 ```{r, fig.width = 10, fig.height = 10}
 ```
 
-c. Using `annotation_raster` layers from `ggplot2`, display the original
-images from (a) at the locations of the UMAP coordinates from (b). The
-correspondence between image filenames and features is given by [this
-array](https://github.com/krisrs1128/stat479_s22/blob/main/_slides/week13/exercises/fnames.npy?raw=true).
-In particular, the $i^{th}$ element of this array is the source image for
-the $i^{th}$ row of the features matrix.
+c. Using `geom_image` from `ggimage`, display the original images from (a) at
+the locations of the UMAP coordinates from (b). The correspondence between image
+filenames and features is given by [this array](https://github.com/krisrs1128/stat479_s22/blob/main/_slides/week13/exercises/fnames.npy?raw=true).
+In particular, the $i^{th}$ element of this array is the source image for the
+$i^{th}$ row of the features matrix.
 
 ```{r, fig.width = 10, fig.height = 10}
-library(progress)
-pb <- progress_bar$new(total = nrow(coords))
-
-s <- .1
-for (i in seq_len(nrow(coords))) {
-  im <- brick(data_dir / path(coords$file[i]))
-  p <- p + 
-    annotation_raster(
-      as.array(im) / 255, 
-      xmin = coords$UMAP1[i] - s, 
-      xmax = coords$UMAP1[i] + s, 
-      ymin = coords$UMAP2[i] - s, 
-      ymax = coords$UMAP2[i] + s
-    )
-  
-  pb$tick()
-}
-
-p
-#ggsave("~/Downloads/image.png", width = 12, height = 12, dpi = 500)
+library(ggimage)
 ```
