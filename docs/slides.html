@@ -2011,7 +2011,7 @@ You are especially encouraged to review any progress towards Project Milestone
 
 ---
 
-### Week 8 - 2
+## Week 8 - 2
 
 1. Visualization Shares
 1. In-Class Discussion [8 - 2]
@@ -2185,7 +2185,7 @@ Live Demos: https://go.wisc.edu/r7ni5s
 
 ---
 
-### Week 10 - 1
+## Week 10 - 1
 
 1. Visualization Shares
 1. In-Class Discussion [10 - 1]
@@ -2253,7 +2253,7 @@ Pause: How to make recipe, how to relate the barplot to the scatterplot, how to 
 ---
 
 
-### Week 10 - 2
+## Week 10 - 2
 
 1. Visualization Shares
 1. In-Class Discussion [10 - 2]
@@ -2331,7 +2331,7 @@ With your group, submit an answer to [Job Interview] from the exercises sheet.
 
 ---
 
-### Week 11 - 1
+## Week 11 - 1
 
 1. Visualization Shares
 1. In-Class Discussion [11 - 1]
@@ -2405,7 +2405,7 @@ from weeks 10 - 11.
 
 ---
 
-### Week 11 - 2
+## Week 11 - 2
 
 1. Visualization Shares
 1. In-Class Discussion [11 - 2]
@@ -2549,9 +2549,8 @@ With your project group, work through [Shniederman's Golden Rules] in the exerci
 
 ---
 
-### Week 12 - 1
+## Week 12 - 1
 
-1. Visualization Shares
 1. In-Class Discussion [12 - 1]
 1. In-Class Demo [12 - 1]
 1. In-Class Exercise [12 - 1]
@@ -2618,7 +2617,7 @@ c. Do you have any questions for the teaching staff related to the upcoming proj
 
 ---
 
-### Week 12 - 2
+## Week 12 - 2
 
 1. Visualization shares
 1. In-Class Discussion [12 - 2]
@@ -2662,7 +2661,7 @@ Figure 2 from ["Phylodynamic assessment of intervention strategies for the West 
 
 With your group, respond to [3 - 2 - 1] in the exercise sheet.
 
-* What are three specific pieces of information you learned in the readings readings? These can be related to either design or implementation.
+* What are three specific pieces of information you learned in the readings? These can be related to either design or implementation.
 * What are two points from our readings that you found interesting?
 * What is one point that still seems confusing or opaque?
 
@@ -2690,9 +2689,9 @@ whose interpretation might not be obvious at first.
 
 ---
 
-### Week 13 - 1
+## Week 13 - 1
 
-1. Visualization Shares
+1. Review Exercise [12 - 2]
 1. In-Class Discussion [13 - 1]
 1. In-Class Demo [13 - 1]
 1. In-Class Exercise [13 - 1]
@@ -2707,67 +2706,121 @@ whose interpretation might not be obvious at first.
 1. Showcase of course projects
   - We will create a website to showcase projects or any of your portfolio submissions.
   - If you want to be included, respond here: https://go.wisc.edu/cee17k
+1. Lightning Talks
+  - Exercises will require you to attend and prepare questions for other teams
 
 ---
 
-### Review
+### Today
 
-_When does it help to modify factor levels?_
+By the end of the class, you should be able to...
 
-* If we have an axis encoding categorical information, then it helps to order the categories by something meaningful.
- - Similarly, it helps to order facets deliberately
-* Usually, we use `reorder()` directly within the `ggplot()` definition. This only works if the reordering operation is simple.
-* More generally, we can manually change factor levels to update category/facet ordering.
+* Explain what it means for a deep learning model to learn intermediate representations.
+* Visualize the activation patterns of individual neurons in deep network.
 
 ---
 
-### Review
+### Deep Learning Example
+
+https://distill.pub/2016/handwriting/
+
+.center[
+&lt;img src="figure/distill_handwriting.png" width=700/&gt;
+]
+
+---
+
+### Review: Topic Model Output
+
+&gt; Opaque point: refresher on how to interpret structure plots 
+
+&gt; One point that is confusing is what the plot is being sorting on? (similar color group) Why we need sorting? Can we use machine learning method to determine which keywords are positive or negative based on the results returned from topic model?
+
+---
+
+Here is a structure plot for five randomly chosen samples from our in-class demo
+about hotel reviews.
+
+&lt;img src="figure/mini_memberships.png"/&gt;
+
+E.g., document 9 is a 5 star review that is almost entirely topic 8.
+
+---
+
+This is the analogous plot with 100 reviews. Without sorting, this gets quite messy.
+
+&lt;img src="figure/mini_memberships-100.png"/&gt;
+
+Notice I also removed the document IDs from the x-axis (they were too small to read).
+
+---
+
+Sorting helps us recognize groups of documents with similar membership patterns.
+
+&lt;img src="figure/mini_memberships-100-sorted.png"/&gt;
+
+---
+
+The sorting is based on leaf order in a clustering tree. 
+
+.center[
+&lt;img src="figure/mini_memberships_tree.png"/&gt;
+]
+
+---
+
+This is the structure plot with all 1000 reviews, now sorted by a tree with 1000
+leaves.
+
+&lt;img src="figure/mini_memberships-all-sorted.png"/&gt;
+
+---
+
+&gt; Can we use machine learning method to determine which keywords are positive or negative based on the results returned from topic model?
+
+Indirectly, yes. You can train a model to predict ratings from topic
+memberships. You can interpret that model to see which topics are associated
+with positive or negative reviews.
+
+---
+
+### Review: Preprocessing
+
+&gt; One point that is still opaque is the preprocessing steps required in order to fit and interpret the model.
+
+* This is context specific! There are no universal preprocessing strategies.
+* The best advice I know is to think carefully about the difference between reality and measurement. Preprocessing should help minimize measurement-related artifacts.
+
+---
+
+### Review: Topic Model Specification
+
+&gt; One point opaque I’m still unsure about on the topic models is how do we know if we have the “correct” or the “best” number of topics for a dataset.
+
+The `perplexity` function computes the likelihood of previously unobserved
+documents. It can be used like a test error.
 
 
 ``` r
-toy_data &lt;- tibble(
-  letters = rep(letters[1:5], each = 10),
-  values = rnorm(50)
-)
-
-ggplot(toy_data) +
-  geom_point(aes(letters, values))
+library(topicmodels)
+?perplexity
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-59-1.png" width="650" style="display: block; margin: auto;" /&gt;
-
 ---
 
-### Review
+### Review: Topic Model Specification
 
+I have also written a paper about this:
 
-``` r
-toy_data |&gt;
-  mutate(letters = factor(letters, levels = c("a", "c", "e", "b", "d"))) |&gt;
-  ggplot() +
-  geom_point(aes(letters, values))
-```
+&lt;div style="font-size: 20px"&gt;
+Julia Fukuyama, Kris Sankaran, Laura Symul, Multiscale analysis of count data
+through topic alignment, Biostatistics, Volume 24, Issue 4, October 2023, Pages
+1045–1065, https://doi.org/10.1093/biostatistics/kxac018
+&lt;/div&gt;
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-60-1.png" width="650" style="display: block; margin: auto;" /&gt;
-
----
-
-### Review
-
-_How can we interpret PCA?_
-
-&lt;img src="figure/pca_summary.png"/&gt;
-
----
-
-### Review
-
-_When would prior and posterior predictions be used?_
-
-* Whenever you are using a Bayesian model and want to compare prior distributions / likelihood models.
-* Examples: [Political science](https://www.annualreviews.org/doi/10.1146/annurev.polisci.7.012003.104706), [genetics](https://www.pnas.org/doi/10.1073/pnas.1412301112), [psychology](https://www.mskcc.org/sites/default/files/node/176881/documents/2019-06-03-16-06-14/li_schofield_gonen_dptutorial19.pdf), [evolution](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3985471/), [epidemiology](https://www.asc.ohio-state.edu/goel.1/STAT825/PAPERS/CressiePPMC.pdf)
-  - Typically problems where there is interest in a compact generative model.
-
+.center[
+&lt;img src="figure/alto.png" width=600/&gt;
+]
 
 ---
 
@@ -2779,37 +2832,42 @@ With your group, respond to [Tensorflow Playground]: https://go.wisc.edu/e3xm20
 
 ### In-Class Demo [13 - 1]
 
-We will work through [Histopathology Embeddings] in the exercise sheet.
+We will work through [Deep Learning as a Mixture of Separating Hyperplanes] in the exercise sheet.
 
 Live Demos: https://go.wisc.edu/r7ni5s
 
-
-For a related analysis, consider: [UMAP Image Collection](https://observablehq.com/@cpietsch/explorawolke-fisheye-view-snappy)
 
 ---
 
 ### In-Class Exercise [13 - 1]
 
-Prepare responses to [The top ten worst graphs] in the exercise sheet. You can
-discuss with your team, but make submissions individually.
+Respond to [Model Visualization Use Cases] in the exercise sheet. Discuss with
+your team, but make submissions individually.
 
-Prof. Broman has a delightful list of rogue data Visualizations:
-[https://www.biostat.wisc.edu/~kbroman/topten_worstgraphs/](https://www.biostat.wisc.edu/~kbroman/topten_worstgraphs/)
-
-a. Review 3 figures from the list *without* reading Prof. Broman's discussion
-of them. Summarize the essential issues with the underlying visualization.
-
-b. Again, without reading the discussion, propose an alternative way to
-communicate the main message of the graphic.
-
-c. Read the discussion. How does it complement your analysis? What shared data
-visualization principles are you drawing from?
-
+&lt;div style="font-size: 18px"&gt;
+How might you approach model visualization in these problems?
+&lt;ol&gt;
+  &lt;li&gt; Your colleagues have trained a random forest model to predict whether activity observed on a
+  corporate network might be the early signs of a cyberattack. The model is based on features like
+  the average network data rate, the average packet size, and the port numbers of source traffic.
+  Describe visualizations that could help your colleagues understand and improve their trained
+  model.&lt;/li&gt;
+&lt;br/&gt;
+  &lt;li&gt;You working with a client to analyze data from a crisis text helpline. They are interested in the
+  topics that often arise during these support sessions. They are also curious whether some topics
+  are are more easily resolved than others, as measured by a follow-up survey. Propose an analysis
+  strategy and the types of visualizations you expect to be helpful.&lt;/li&gt;
+&lt;br/&gt;
+  &lt;li&gt;You have built a deep learning model to detect changes in satellite imagery (e.g., before and after
+  a natural disaster). Describe visualization techniques that can help you understand the latent
+  image characteristics that may be learned by your model.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 
 ---
 
 
-### Week 13 - 2
+## Week 13 - 2
 
 1. Visualization Shares
 1. In-Class Discussion [13 - 2]
@@ -2821,23 +2879,21 @@ visualization principles are you drawing from?
 
 1. Upcoming Deadlines
   - HW4
-  - Project Milestone 3
+  - Project Milestone 3. Check milestone for presentation order.
+1. Showcase of course projects
+  - We will create a website to showcase projects or any of your portfolio submissions.
+  - If you want to be included, respond here: https://go.wisc.edu/cee17k
+1. Lightning Talks
+  - Exercises will require you to attend and prepare questions for other teams
+
 
 ---
 
-### In-Class Demo [13 - 2]
-
-We will work through [Histopathology Embeddings] again, this time assisted by an
-LLM.
-
-Live Demos: https://go.wisc.edu/r7ni5s
-
----
-
-### Week 14 - 1
+## Week 14 - 1
 
 1. In-Class Discussion [14 - 1]
-1. Review and Recommendations
+1. In-Class Demo [13 - 2]
+1. Reflection Activity [14 - 1]
 
 ---
 
@@ -2845,9 +2901,55 @@ Live Demos: https://go.wisc.edu/r7ni5s
 
 1. Upcoming Deadlines
   - HW4
-  - Project Milestone 3
-1. Logistics
-1. I encourage you to review the HW3 solutions.
+  - Project Milestone 3. Check milestone for presentation order.
+1. Showcase of course projects
+  - We will create a website to showcase projects or any of your portfolio submissions.
+  - If you want to be included, respond here: https://go.wisc.edu/cee17k
+1. Lightning Talks
+  - Exercises will require you to attend and prepare questions for other teams
+
+---
+
+### In-Class Discussion [14 - 1]
+
+As a class, we will study some of the Q&amp;A tips in the article [“Any questions?”](https://www.embopress.org/doi/epdf/10.1038/embor.2011.20)
+by Jennifer Streeter and Francis J. Miller. Their categorization of questions is
+helpful for either when we are in the audience (it gives example prompts) or
+when we are presenting (it helps us prepare). With your group, 
+
+* Prepare a definition and for the question types that your group is assigned.  
+* Brainstorm an example of a question of that type that your group might be asked during its lightning talk.
+
+Odd Groups: Suggestion, I don’t understand, What do you think?
+
+Even Groups: We have found, Probing, What do you think?
+
+---
+
+
+### In-Class Demo [13 - 2]
+
+We will work through [Histopathology Embeddings].
+
+Live Demos: https://go.wisc.edu/r7ni5s
+
+---
+
+### Reflection Activity [14 - 1]
+
+Discuss one of the three prompts:
+  * Advice for future students
+  * What and now what?
+  * Time Capsule
+
+---
+
+## Week 14 - 2
+
+1. Review and Recommendations
+1. Lightning Talks
+  - Q&amp;A Doc: https://go.wisc.edu/9568ee
+  - In-Class Exercise [14 - 2]
 
 ---
 
@@ -2856,17 +2958,6 @@ Live Demos: https://go.wisc.edu/r7ni5s
 * The course canvas, notes, and recordings will remain online indefinitely.
 * In-class demos will be taken down from the course repository
   - Please save if you want continued access.
-
----
-
-### In-Class Discussion [14 - 1]
-
-Link: https://go.wisc.edu/8skvdv
-
-Discuss one of the three prompts:
-  * Advice for future students
-  * What and now what?
-  * Time Capsule
 
 ---
 
@@ -2885,7 +2976,7 @@ Discuss one of the three prompts:
 * Going Further
   - [Grammar of Graphics](https://search.library.wisc.edu/catalog/9911035726302121) by Leland Wilkinson
   - [Visualization Analysis and Design](https://search.library.wisc.edu/catalog/9911196629502121) by Tamara Munzner
-  - [Semiology of Grahpics](https://search.library.wisc.edu/catalog/9910121754502121) by Jacques Bertin
+  - [Semiology of Graphics](https://search.library.wisc.edu/catalog/9910121754502121) by Jacques Bertin
 
 ---
 
@@ -2904,7 +2995,8 @@ Discuss one of the three prompts:
 * Focus-plus-Context: Allow readers to navigate multiple scales of interest
 * Going Further
   - [Design of Everyday Things](https://search.library.wisc.edu/catalog/9910706218202121) by Don Norman
-
+  - [Designing the User Interface]() by Shneiderman and Plaisant
+  - The [vega-lite](https://vega.github.io/vega-lite/) and [mosaic](https://idl.uw.edu/mosaic/) packages
 ---
 
 ### Review: Spatial and Temporal Data
@@ -2940,6 +3032,7 @@ Discuss one of the three prompts:
 * Going Further
   - [Interactive High-Dimensional Data Visualization](https://www.tandfonline.com/doi/abs/10.1080/10618600.1996.10474696) by Buja, Cook, Swayne
   - [Diffusion Maps (PNAS)](https://www.pnas.org/action/oidcStart?redirectUri=%2Fdoi%2F10.1073%2Fpnas.0500334102) by Coifman et al.
+  - [Manifold Learning: What, How, and Why](https://doi.org/10.1146/annurev-statistics-040522-115238) by Meilă and Zhang
 
 ---
 
@@ -2977,8 +3070,10 @@ Discuss one of the three prompts:
 * Going Further
   - [Distill Journal](https://distill.pub/)
   - [MLVis Workshop](https://events.tuni.fi/mlvis/mlvis2024/)
+  - [VisXAI Workshop](https://visxai.io/)
   - [MLSS Tutorial](https://docs.google.com/presentation/d/e/2PACX-1vT9niyHbIv29umb-p3jNHNvs0wpXwwnXvUdubiunV3J0N8O2E7cTrax4giBfPs-xDVnEdaHdN2Ui9Bd/embed?start=false&amp;loop=false&amp;delayms=60000&amp;slide=id.p) by Been Kim
   - [Agency plus Automation (PNAS)](https://www.pnas.org/doi/10.1073/pnas.1807184115) by Jeff Heer
+  - STAT 992 (SP25) - Interpretable and Explainable Machine Learning
 
 ---
 
@@ -3002,8 +3097,6 @@ tinkering, and visual explanations.
 1. Send me your favorite visualizations.
 1. There are many important problems that could benefit from careful reasoning
 about data. Use your skills to help!
-
----
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
